@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.bijon.sampleapp.HomePageActivity">
+    <item
+        android:id="@+id/action_menu"
+        android:orderInCategory="100"
+        android:title="Menu">
+        <menu>
+            <item
+                android:id="@+id/action_userdetails"
+                android:title="User Profile Details"/>
+            <item
+                android:id="@+id/action_alertlist"
+                android:title="Alert List"/>
+            <item
+                android:id="@+id/action_report"
+                android:title="Report"/>
+            <item
+                android:id="@+id/logout"
+                android:title="Log Out"/>
+        </menu>
+    </item>
+</menu>
