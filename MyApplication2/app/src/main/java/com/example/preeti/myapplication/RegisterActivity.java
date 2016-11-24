@@ -19,7 +19,7 @@ public class RegisterActivity extends AppCompatActivity {
         final EditText etAge = (EditText) findViewById(R.id.etAge);
         final EditText etEmail = (EditText) findViewById(R.id.etEmail);
 
-        Button mRegisterButton = (Button) findViewById(R.id.registerButton);
+        Button mRegisterButton = (Button) findViewById(R.id.btnRegister);
         /*mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {

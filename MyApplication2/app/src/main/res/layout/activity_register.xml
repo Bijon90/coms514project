@@ -104,46 +104,36 @@
                 android:ems="10"
                 android:id="@+id/etAge"
                 android:text="Age:" />
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="number"
                 android:ems="10"
-                android:layout_below="@+id/radioButton"
-                android:layout_alignParentLeft="true"
-                android:layout_marginTop="11dp"
                 android:id="@+id/etWeight"
-                tools:text="Weight:" />
+                android:text="Weight:" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="number"
                 android:ems="10"
-                android:layout_below="@+id/radioButton"
-                android:layout_alignParentLeft="true"
-                android:layout_marginTop="11dp"
                 android:id="@+id/etHeight"
-                tools:text="Height:" />
+                android:text="Height:" />
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="number"
                 android:ems="10"
-                android:layout_below="@+id/radioButton"
-                android:layout_alignParentLeft="true"
-                android:layout_marginTop="11dp"
                 android:id="@+id/etHeartRate"
-                tools:text="Heart Rate:" />
+                android:text="HeartRate:" />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textMultiLine"
                 android:ems="10"
-                android:layout_below="@+id/editText12"
-                android:layout_alignParentLeft="true"
-                android:id="@+id/etHistory"
+                android:id="@+id/etMHistory"
                 android:text="Medical History:" />
             <Button
                 android:text="Cretae Alert List"
