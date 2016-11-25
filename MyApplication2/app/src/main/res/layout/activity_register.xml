@@ -150,7 +150,8 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:id="@+id/btnRegister" />
+                android:id="@+id/btnRegisterSubmit"
+                android:onClick="btnRegisterSubmit_Click"/>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
