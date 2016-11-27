@@ -10,6 +10,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.preeti.myapplication.UserProfileActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -18,82 +24,90 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true">
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="31dp"
             android:inputType="textPersonName"
-            android:text="First Name:"
             android:ems="10"
-            android:id="@+id/editText"
-            android:hint="First Name:" />
+            android:id="@+id/tvfName"
+            android:text="First Name:" />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="31dp"
             android:inputType="textPersonName"
-            android:text="Last Name:"
             android:ems="10"
-            android:id="@+id/editText2"
-            android:hint="Last Name:" />
+            android:id="@+id/tvlName"
+            android:text="Last Name:" />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="31dp"
             android:inputType="textEmailAddress"
             android:ems="10"
-            android:id="@+id/editText3"
-            android:hint="@string/prompt_email"
-            android:text="Email:" />
+            android:id="@+id/tvEmail"
+            android:text="@string/prompt_email"/>
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="31dp"
             android:inputType="textPersonName"
-            android:text="User Name"
             android:ems="10"
-            android:id="@+id/editText4"
-            android:hint="UserName:" />
-
-        <EditText
+            android:id="@+id/tvUname"
+            android:text="UserName:" />
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="31dp"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText9"
+            android:id="@+id/tvAge"
             android:text="Age:" />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="31dp"
             android:inputType="textPersonName"
             android:text="Sex:"
             android:ems="10"
-            android:id="@+id/editText16" />
+            android:id="@+id/tvSex" />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="31dp"
             android:inputType="number"
             android:ems="10"
-            android:id="@+id/editText19"
-            android:text="Height:" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:ems="10"
-            android:id="@+id/editText21"
+            android:id="@+id/tvWeight"
             android:text="Weight:" />
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="31dp"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/tvHeight"
+            android:text="Height:" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="31dp"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/tvHeartRate"
+            android:text="Average Heart Rate:" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="31dp"
             android:inputType="textMultiLine"
             android:ems="10"
-            android:id="@+id/editText22"
+            android:id="@+id/tvMHistory"
             android:text="Medical History:" />
-
+        <Button
+            android:text="Back to Home Page"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true"
+            android:id="@+id/btnBackHomePage" />
     </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

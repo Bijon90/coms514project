@@ -10,6 +10,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.preeti.myapplication.AlertListActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -21,10 +28,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Name:"
+            android:text="Doctor's Name:"
             android:ems="10"
-            android:id="@+id/editText8"
-            android:hint="st" />
+            android:id="@+id/etDcoName"
+            android:hint="Name" />
 
         <EditText
             android:layout_width="match_parent"
@@ -32,7 +39,7 @@
             android:inputType="textPersonName"
             android:text="Email:"
             android:ems="10"
-            android:id="@+id/editText10"
+            android:id="@+id/etDocEmail"
             android:hint="@string/prompt_email" />
 
         <EditText
@@ -40,31 +47,82 @@
             android:layout_height="wrap_content"
             android:inputType="phone"
             android:ems="10"
-            android:id="@+id/editText14"
+            android:id="@+id/etDocPhone"
             android:text="Phone: "
-            android:hint="st" />
+            android:hint="Phone" />
 
-        <EditText
+        <!--<EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:text="Relation:"
             android:ems="10"
-            android:id="@+id/editText15" />
+            android:id="@+id/editText15" />-->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Care Giver's Name:"
+            android:ems="10"
+            android:id="@+id/etCareName"
+            android:hint="Name" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Email:"
+            android:ems="10"
+            android:id="@+id/etCareEmail"
+            android:hint="@string/prompt_email" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:ems="10"
+            android:id="@+id/etCarePhone"
+            android:text="Phone: "
+            android:hint="Phone" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Family Member's Name:"
+            android:ems="10"
+            android:id="@+id/etFamilyName"
+            android:hint="Name" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Email:"
+            android:ems="10"
+            android:id="@+id/etFamilyEmail"
+            android:hint="@string/prompt_email" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:ems="10"
+            android:id="@+id/etFamilyPhone"
+            android:text="Phone: "
+            android:hint="Phone" />
+        <Button
+            android:text="Back"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:id="@+id/btnBackRegister" />
 
         <Button
-            android:text="Add More"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button4" />
+            android:text="Submit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:id="@+id/btnSaveAlertList" />
     </LinearLayout>
-
-    <Button
-        android:text="Submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="170dp"
-        android:id="@+id/button" />
+    </ScrollView>
 </RelativeLayout>
