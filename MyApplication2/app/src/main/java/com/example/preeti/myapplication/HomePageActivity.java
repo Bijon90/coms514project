@@ -1,5 +1,6 @@
 package com.example.preeti.myapplication;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class HomePageActivity extends AppCompatActivity {
 
@@ -30,10 +33,23 @@ public class HomePageActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_menu) {
-            return true;
+        switch(id){
+            case R.id.action_userdetails:
+                startActivity(new Intent(this, UserProfileActivity.class));
+                break;
+            case R.id.action_alertlist:
+                startActivity(new Intent(this, AlertListDetailsActivity.class));
+                break;
+            case R.id.action_report:
+
+                break;
+            case R.id.logout:
+                firebaseAuth.signOut();
+                finish();
+                startActivity(new Intent(this, LoginActivity.class));
+                break;
         }
 
         return super.onOptionsItemSelected(item);

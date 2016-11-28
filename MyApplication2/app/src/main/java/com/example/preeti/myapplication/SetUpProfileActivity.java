@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -22,15 +23,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
+public class SetUpProfileActivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText etFname;
     private EditText etLname;
-    private EditText etEmail;
-    private EditText etUserName;
     private EditText etAddress;
-    private EditText etPassword;
-    private EditText etCPassword;
     private RadioGroup etSex;
     private EditText etAge;
     private EditText etWeight;
@@ -38,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private EditText etHeartRate;
     private EditText etMHistory;
 
-    private Button mRegisterSubmitButton;
+    private Button mSaveDetailsButton;
     private Button mSetAlertListButton;
 
     private FirebaseAuth firebaseAuth;
@@ -54,21 +51,18 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         firebaseAuth = FirebaseAuth.getInstance();
 
         //if getCurrentUser does not returns null
-        if(firebaseAuth.getCurrentUser() != null){
+        /*if(firebaseAuth.getCurrentUser() != null){
             //that means user is already logged in, so close this activity
             finish();
             //and open homepage activity
             startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
-        }
+        }*/
 
         etFname = (EditText) findViewById(R.id.etFname);
         etLname = (EditText) findViewById(R.id.etLname);
-        etEmail = (EditText) findViewById(R.id.etEmail);
-        etUserName = (EditText) findViewById(R.id.etUname);
         etAddress = (EditText) findViewById(R.id.etAddress);
-        etPassword = (EditText) findViewById(R.id.etPassword);
-        etCPassword = (EditText) findViewById(R.id.etCPassword);
         etSex = (RadioGroup) findViewById(R.id.rgSex);
+
         etAge = (EditText) findViewById(R.id.etAge);
         etWeight = (EditText) findViewById(R.id.etWeight);
         etHeight = (EditText) findViewById(R.id.etHeight);
@@ -78,8 +72,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         /*FirebaseUser currUser = firebaseAuth.getCurrentUser();
         dbReference = FirebaseDatabase.getInstance().getReference();*/
 
-        mRegisterSubmitButton = (Button) findViewById(R.id.btnRegisterSubmit);
-        mRegisterSubmitButton.setOnClickListener(this);
+        mSaveDetailsButton = (Button) findViewById(R.id.btnSaveDetails);
+        mSaveDetailsButton.setOnClickListener(this);
 
         mSetAlertListButton = (Button) findViewById(R.id.btnCreateList);
         mSetAlertListButton.setOnClickListener(this);
@@ -98,49 +92,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         });*/
         progressDialog = new ProgressDialog(this);
     }
-    private void registerUser(){
-        String email = etEmail.getText().toString().trim();
-        String password  = etPassword.getText().toString().trim();
-        String cPassword  = etCPassword.getText().toString().trim();
-        if(isPasswordMatch(password,cPassword)) {
-            //checking if email and passwords are empty
-            if (TextUtils.isEmpty(email)) {
-                Toast.makeText(this, "Please enter email", Toast.LENGTH_LONG).show();
-                return;
-            }
-            if (TextUtils.isEmpty(password)) {
-                Toast.makeText(this, "Please enter password", Toast.LENGTH_LONG).show();
-                return;
-            }
-            progressDialog.setMessage("Registering Please Wait...");
-            progressDialog.show();
-            firebaseAuth.createUserWithEmailAndPassword(etEmail.getText().toString(), etPassword.getText().toString())
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            progressDialog.dismiss();
-                            if (task.isSuccessful()) {
-                                Toast.makeText(RegisterActivity.this, "Saving Profile Details", Toast.LENGTH_LONG).show();
-                                /*Intent i = new Intent(RegisterActivity.this, LoginActivity.class);
-                                startActivity(i);*/
-                                saveUserDetails();
-                                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                            } else {
-                                Log.e("Error!", task.getException().toString());
-                                Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    });
-        }
-    }
-
     private void saveUserDetails(){
             String fName = etFname.getText().toString().trim();
             String lName = etLname.getText().toString().trim();
-            String email = etEmail.getText().toString().trim();
-            String uName = etUserName.getText().toString().trim();
             String address = etAddress.getText().toString().trim();
-            String sex = etSex.toString();
+            String sex = ((RadioButton)findViewById(etSex.getCheckedRadioButtonId())).getText().toString();
             System.out.println("Sex" + sex);
             int age = Integer.parseInt(etAge.getText().toString().trim());
             double weight = Double.parseDouble(etWeight.getText().toString().trim());
@@ -148,32 +104,26 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             double hRate = Double.parseDouble(etHeartRate.getText().toString().trim());
             String mHistory = etMHistory.getText().toString().trim();
 
-            UserDetails userDetails = new UserDetails(fName, lName, email, uName, address, sex, age,
+            UserDetails userDetails = new UserDetails(fName, lName, address, sex, age,
                     weight, height, hRate, mHistory);
             FirebaseUser currUser = firebaseAuth.getCurrentUser();
-            dbReference.child(currUser.getUid()).setValue(userDetails);
+            dbReference.child(currUser.getUid()).child("UserDetails").setValue(userDetails);
 
             Toast.makeText(this, "Information saved...", Toast.LENGTH_LONG).show();
-    }
-
-    private boolean isPasswordMatch(String password, String cPassword){
-        if(!password.equals(cPassword)){
-            Toast.makeText(this, "Password does nopt match...", Toast.LENGTH_LONG).show();
-            return false;
-        }
-        else return true;
+            startActivity(new Intent(SetUpProfileActivity.this, LoginActivity.class));
     }
 
     @Override
     public void onClick(View view) {
 
-        if(view == mRegisterSubmitButton){
-            registerUser();
+        if(view == mSaveDetailsButton){
+            saveUserDetails();
         }
 
         if(view == mSetAlertListButton){
+            finish();
             //open login activity when user taps on the already registered textview
-            startActivity(new Intent(this, AlertListActivity.class));
+            startActivity(new Intent(SetUpProfileActivity.this, AlertListActivity.class));
         }
 
     }

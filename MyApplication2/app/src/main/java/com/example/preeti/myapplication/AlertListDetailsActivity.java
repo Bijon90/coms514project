@@ -130,6 +130,7 @@ public class AlertListDetailsActivity extends AppCompatActivity implements View.
         }
 
         if(view == mBackHomepageButton){
+            finish();
             //open login activity when user taps on the already registered textview
             startActivity(new Intent(this, HomePageActivity.class));
         }

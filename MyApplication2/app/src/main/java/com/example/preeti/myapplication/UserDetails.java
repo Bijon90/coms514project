@@ -7,8 +7,6 @@ package com.example.preeti.myapplication;
 public class UserDetails {
     public String fName;
     public String lName;
-    public String email;
-    public String uName;
     public String address;
     public String sex;
     public int age;
@@ -19,12 +17,10 @@ public class UserDetails {
 
     public UserDetails(){}
 
-    public UserDetails(String fName, String lName, String email, String uName, String address,
+    public UserDetails(String fName, String lName, String address,
                        String sex, int age, double weight, double height, double hRate, String mHistory) {
         this.fName = fName;
         this.lName = lName;
-        this.email = email;
-        this.uName = uName;
         this.address = address;
         this.sex = sex;
         this.age = age;
@@ -34,7 +30,7 @@ public class UserDetails {
         this.mHistory = mHistory;
     }
 
-    public String getfName() {
+    /*public String getfName() {
         return fName;
     }
 
@@ -120,5 +116,5 @@ public class UserDetails {
 
     public void setmHistory(String mHistory) {
         this.mHistory = mHistory;
-    }
+    }*/
 }

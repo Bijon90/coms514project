@@ -2,10 +2,8 @@ package com.example.preeti.myapplication;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.annotation.IntegerRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -44,13 +42,13 @@ public class AlertListActivity extends AppCompatActivity implements View.OnClick
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        //if getCurrentUser does not returns null
+        /*//if getCurrentUser does not returns null
         if(firebaseAuth.getCurrentUser() != null){
             //that means user is already logged in, so close this activity
             finish();
             //and open homepage activity
             startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
-        }
+        }*/
 
         etDocName = (EditText) findViewById(R.id.etDcoName);
         etDocEmail = (EditText) findViewById(R.id.etDocEmail);
@@ -96,12 +94,15 @@ public class AlertListActivity extends AppCompatActivity implements View.OnClick
             AlertContact caregiverDetails = new AlertContact(careName,"CareGiver",careEmail,carePhone);
             AlertContact familyDetails = new AlertContact(familyName,"Family",familyEmail,familyPhone);
 
-            FirebaseUser currUser = firebaseAuth.getCurrentUser();
-            dbReference.child(currUser.getUid()).setValue(docDetails);
-            dbReference.child(currUser.getUid()).setValue(caregiverDetails);
-            dbReference.child(currUser.getUid()).setValue(familyDetails);
+            AlertList alertList = new AlertList(docDetails,caregiverDetails,familyDetails);
 
-            Toast.makeText(this, "Information saved...", Toast.LENGTH_LONG).show();
+            FirebaseUser currUser = firebaseAuth.getCurrentUser();
+            dbReference.child(currUser.getUid()).child("AlertList").setValue(alertList);
+            /*dbReference.child(currUser.getUid()).setValue(docDetails);
+            dbReference.child(currUser.getUid()).setValue(caregiverDetails);
+            dbReference.child(currUser.getUid()).setValue(familyDetails);*/
+
+            Toast.makeText(this, "AlertList saved...", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -133,7 +134,7 @@ public class AlertListActivity extends AppCompatActivity implements View.OnClick
 
         if(view == mBackButton){
             //open login activity when user taps on the already registered textview
-            startActivity(new Intent(this, RegisterActivity.class));
+            startActivity(new Intent(this, SetUpProfileActivity.class));
         }
     }
 }

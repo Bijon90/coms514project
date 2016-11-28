@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "254166452686",
-    "firebase_url": "https://pulsetracker-3be87.firebaseio.com",
-    "project_id": "pulsetracker-3be87",
-    "storage_bucket": "pulsetracker-3be87.appspot.com"
+    "project_number": "574618178454",
+    "firebase_url": "https://pulsetracker-acdda.firebaseio.com",
+    "project_id": "pulsetracker-acdda",
+    "storage_bucket": "pulsetracker-acdda.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:254166452686:android:00aee6949ae1bac3",
+        "mobilesdk_app_id": "1:574618178454:android:ace3b0bac890795f",
         "android_client_info": {
-          "package_name": "com.coms514.pulseTracker"
+          "package_name": "com.example.preeti.myapplication"
         }
       },
       "oauth_client": [
         {
-          "client_id": "254166452686-sogbigofftoavv09ocdbo78k6iqa16cq.apps.googleusercontent.com",
+          "client_id": "574618178454-i2pkc90fafp1f48d05nnendm7jqb19qv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBu3VF97bt7HOmMAIHROLhmv3qE7qo4UEQ"
+          "current_key": "AIzaSyAC0plhidcto5wqUWDi0h9mRcu0wm2qwec"
         }
       ],
       "services": {
@@ -31,50 +31,6 @@
         "appinvite_service": {
           "status": 1,
           "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:254166452686:android:ace3b0bac890795f",
-        "android_client_info": {
-          "package_name": "com.example.preeti.myapplication"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "254166452686-4fuvuk1blc7cbgrmbqdtrjhf1mmln1la.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.preeti.myapplication",
-            "certificate_hash": "765C802FB36439D05ED806F84EBE9B4EECFACBA9"
-          }
-        },
-        {
-          "client_id": "254166452686-sogbigofftoavv09ocdbo78k6iqa16cq.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBu3VF97bt7HOmMAIHROLhmv3qE7qo4UEQ"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "254166452686-sogbigofftoavv09ocdbo78k6iqa16cq.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
         },
         "ads_service": {
           "status": 2
