@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.preeti.myapplication.AlertListActivity">
+    tools:context="com.example.preeti.myapplication.AlertListDetailsActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -30,8 +30,7 @@
             android:inputType="textPersonName"
             android:text="Doctor's Name:"
             android:ems="10"
-            android:id="@+id/etDcoName"
-            android:hint="Name" />
+            android:id="@+id/tvDcoName"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -39,33 +38,29 @@
             android:inputType="textPersonName"
             android:text="Email:"
             android:ems="10"
-            android:id="@+id/etDocEmail"
-            android:hint="@string/prompt_email" />
+            android:id="@+id/tvDocEmail"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="phone"
             android:ems="10"
-            android:id="@+id/etDocPhone"
-            android:text="Phone: "
-            android:hint="Phone" />
-
-        <!--<EditText
+            android:id="@+id/tvDocPhone"
+            android:text="Phone: "/>
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:text="Relation:"
             android:ems="10"
-            android:id="@+id/editText15" />-->
+            android:id="@+id/tvRelation1" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:text="Care Giver's Name:"
             android:ems="10"
-            android:id="@+id/etCareName"
-            android:hint="Name" />
+            android:id="@+id/tvCareName"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -73,25 +68,29 @@
             android:inputType="textPersonName"
             android:text="Email:"
             android:ems="10"
-            android:id="@+id/etCareEmail"
-            android:hint="@string/prompt_email" />
+            android:id="@+id/tvCareEmail"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="phone"
             android:ems="10"
-            android:id="@+id/etCarePhone"
-            android:text="Phone: "
-            android:hint="Phone" />
+            android:id="@+id/tvCarePhone"
+            android:text="Phone: "/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Relation:"
+            android:ems="10"
+            android:id="@+id/tvRelation2" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:text="Family Member's Name:"
             android:ems="10"
-            android:id="@+id/etFamilyName"
-            android:hint="Name" />
+            android:id="@+id/tvFamilyName"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -99,30 +98,35 @@
             android:inputType="textPersonName"
             android:text="Email:"
             android:ems="10"
-            android:id="@+id/etFamilyEmail"
-            android:hint="@string/prompt_email" />
+            android:id="@+id/tvFamilyEmail"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="phone"
             android:ems="10"
-            android:id="@+id/etFamilyPhone"
-            android:text="Phone: "
-            android:hint="Phone" />
+            android:id="@+id/tvFamilyPhone"
+            android:text="Phone: "/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:text="Relation:"
+            android:ems="10"
+            android:id="@+id/tvRelation3" />
         <Button
             android:text="Back"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:id="@+id/btnBackRegister" />
+            android:id="@+id/btnBackHomePage" />
 
         <Button
-            android:text="Submit"
+            android:text="Modify"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:id="@+id/btnSaveAlertList" />
+            android:id="@+id/btnModifyAlertList" />
     </LinearLayout>
     </ScrollView>
 </RelativeLayout>

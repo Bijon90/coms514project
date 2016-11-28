@@ -2,8 +2,8 @@ package com.example.preeti.myapplication;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,9 +13,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 
-import static android.text.TextUtils.*;
+import static android.text.TextUtils.isEmpty;
 
-public class AlertListActivity extends AppCompatActivity implements View.OnClickListener {
+public class AlertListDetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText etDocName;
     private EditText etDocEmail;
@@ -27,8 +27,8 @@ public class AlertListActivity extends AppCompatActivity implements View.OnClick
     private EditText etFamilyEmail;
     private EditText etFamilyPhone;
 
-    private Button mAlertSaveButton;
-    private Button mBackButton;
+    private Button mModifyAlertSaveButton;
+    private Button mBackHomepageButton;
 
     private FirebaseAuth firebaseAuth;
     private DatabaseReference dbReference;
@@ -42,34 +42,34 @@ public class AlertListActivity extends AppCompatActivity implements View.OnClick
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        /*//if getCurrentUser does not returns null
+        //if getCurrentUser does not returns null
         if(firebaseAuth.getCurrentUser() != null){
             //that means user is already logged in, so close this activity
             finish();
             //and open homepage activity
             startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
-        }*/
+        }
 
-        etDocName = (EditText) findViewById(R.id.etDcoName);
-        etDocEmail = (EditText) findViewById(R.id.etDocEmail);
-        etDocPhone = (EditText) findViewById(R.id.etDocPhone);
-        etCareName = (EditText) findViewById(R.id.etCareName);
-        etCareEmail = (EditText) findViewById(R.id.etCareName);
-        etCarePhone = (EditText) findViewById(R.id.etCarePhone);
-        etFamilyName = (EditText) findViewById(R.id.etFamilyName);
-        etFamilyEmail = (EditText) findViewById(R.id.etFamilyEmail);
-        etFamilyPhone = (EditText) findViewById(R.id.etFamilyPhone);
+        etDocName = (EditText) findViewById(R.id.tvDcoName);
+        etDocEmail = (EditText) findViewById(R.id.tvDocEmail);
+        etDocPhone = (EditText) findViewById(R.id.tvDocPhone);
+        etCareName = (EditText) findViewById(R.id.tvCareName);
+        etCareEmail = (EditText) findViewById(R.id.tvCareName);
+        etCarePhone = (EditText) findViewById(R.id.tvCarePhone);
+        etFamilyName = (EditText) findViewById(R.id.tvFamilyName);
+        etFamilyEmail = (EditText) findViewById(R.id.tvFamilyEmail);
+        etFamilyPhone = (EditText) findViewById(R.id.tvFamilyPhone);
 
-        mAlertSaveButton = (Button) findViewById(R.id.btnSaveAlertList);
-        mAlertSaveButton.setOnClickListener(this);
+        mModifyAlertSaveButton = (Button) findViewById(R.id.btnModifyAlertList);
+        mModifyAlertSaveButton.setOnClickListener(this);
 
-        mBackButton = (Button) findViewById(R.id.btnBackRegister);
-        mBackButton.setOnClickListener(this);
+        mBackHomepageButton = (Button) findViewById(R.id.btnBackHomePage);
+        mBackHomepageButton.setOnClickListener(this);
 
         progressDialog = new ProgressDialog(this);
     }
 
-    private void saveAlertList() {
+    private void modifyAlertList() {
         String docName = etDocName.getText().toString().trim();
         String docEmail = etDocEmail.getText().toString().trim();
         int docPhone = Integer.parseInt(etDocPhone.getText().toString().trim());
@@ -94,15 +94,12 @@ public class AlertListActivity extends AppCompatActivity implements View.OnClick
             AlertContact caregiverDetails = new AlertContact(careName,"CareGiver",careEmail,carePhone);
             AlertContact familyDetails = new AlertContact(familyName,"Family",familyEmail,familyPhone);
 
-            AlertList alertList = new AlertList(docDetails,caregiverDetails,familyDetails);
-
             FirebaseUser currUser = firebaseAuth.getCurrentUser();
-            dbReference.child(currUser.getUid()).child("AlertList").setValue(alertList);
-            /*dbReference.child(currUser.getUid()).setValue(docDetails);
+            dbReference.child(currUser.getUid()).setValue(docDetails);
             dbReference.child(currUser.getUid()).setValue(caregiverDetails);
-            dbReference.child(currUser.getUid()).setValue(familyDetails);*/
+            dbReference.child(currUser.getUid()).setValue(familyDetails);
 
-            Toast.makeText(this, "AlertList saved...", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Information saved...", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -128,13 +125,14 @@ public class AlertListActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View view) {
-        if(view == mAlertSaveButton){
-            saveAlertList();
+        if(view == mModifyAlertSaveButton){
+            modifyAlertList();
         }
 
-        if(view == mBackButton){
+        if(view == mBackHomepageButton){
+            finish();
             //open login activity when user taps on the already registered textview
-            startActivity(new Intent(this, SetUpProfileActivity.class));
+            startActivity(new Intent(this, HomePageActivity.class));
         }
     }
 }
