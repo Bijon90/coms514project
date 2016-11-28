@@ -24,7 +24,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
-        <activity android:name=".RegisterActivity" />
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".SetUpProfileActivity" />
+        <activity android:name=".AlertListDetailsActivity" />
         <activity android:name=".UserProfileActivity" />
         <activity android:name=".AlertListActivity" />
         <activity android:name=".HomePageActivity"></activity>
