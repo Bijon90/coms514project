@@ -39,7 +39,7 @@ public class HomePageActivity extends AppCompatActivity {
             case R.id.action_userdetails:
                 startActivity(new Intent(this, UserProfileActivity.class));
                 break;
-            case R.id.action_alertlist:
+            case R.id.action_alertlistdetails:
                 startActivity(new Intent(this, AlertListDetailsActivity.class));
                 break;
             case R.id.action_report:

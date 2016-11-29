@@ -97,7 +97,6 @@ public class SetUpProfileActivity extends AppCompatActivity implements View.OnCl
             String lName = etLname.getText().toString().trim();
             String address = etAddress.getText().toString().trim();
             String sex = ((RadioButton)findViewById(etSex.getCheckedRadioButtonId())).getText().toString();
-            System.out.println("Sex" + sex);
             int age = Integer.parseInt(etAge.getText().toString().trim());
             double weight = Double.parseDouble(etWeight.getText().toString().trim());
             double height = Double.parseDouble(etHeight.getText().toString().trim());

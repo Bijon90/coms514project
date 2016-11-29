@@ -32,7 +32,7 @@
             android:ems="10"
             android:id="@+id/tvDcoName"/>
 
-        <EditText
+        <!--<EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
@@ -113,7 +113,7 @@
             android:inputType="textPersonName"
             android:text="Relation:"
             android:ems="10"
-            android:id="@+id/tvRelation3" />
+            android:id="@+id/tvRelation3" />-->
         <Button
             android:text="Back"
             android:layout_width="match_parent"

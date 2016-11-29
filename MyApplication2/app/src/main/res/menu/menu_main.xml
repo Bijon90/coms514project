@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.bijon.sampleapp.HomePageActivity">
+    tools:context="com.example.preeti.myapplication.HomePageActivity">
     <item
         android:id="@+id/action_menu"
         android:orderInCategory="100"
@@ -11,7 +11,7 @@
                 android:id="@+id/action_userdetails"
                 android:title="User Profile Details"/>
             <item
-                android:id="@+id/action_alertlist"
+                android:id="@+id/action_alertlistdetails"
                 android:title="Alert List"/>
             <item
                 android:id="@+id/action_report"

@@ -38,27 +38,27 @@ public class AlertListDetailsActivity extends AppCompatActivity implements View.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_alert_list);
+        setContentView(R.layout.activity_alert_list_details);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        //if getCurrentUser does not returns null
+        /*//if getCurrentUser does not returns null
         if(firebaseAuth.getCurrentUser() != null){
             //that means user is already logged in, so close this activity
             finish();
             //and open homepage activity
             startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
-        }
+        }*/
 
         etDocName = (EditText) findViewById(R.id.tvDcoName);
-        etDocEmail = (EditText) findViewById(R.id.tvDocEmail);
+        /*etDocEmail = (EditText) findViewById(R.id.tvDocEmail);
         etDocPhone = (EditText) findViewById(R.id.tvDocPhone);
         etCareName = (EditText) findViewById(R.id.tvCareName);
         etCareEmail = (EditText) findViewById(R.id.tvCareName);
         etCarePhone = (EditText) findViewById(R.id.tvCarePhone);
         etFamilyName = (EditText) findViewById(R.id.tvFamilyName);
         etFamilyEmail = (EditText) findViewById(R.id.tvFamilyEmail);
-        etFamilyPhone = (EditText) findViewById(R.id.tvFamilyPhone);
+        etFamilyPhone = (EditText) findViewById(R.id.tvFamilyPhone);*/
 
         mModifyAlertSaveButton = (Button) findViewById(R.id.btnModifyAlertList);
         mModifyAlertSaveButton.setOnClickListener(this);
@@ -71,7 +71,7 @@ public class AlertListDetailsActivity extends AppCompatActivity implements View.
 
     private void modifyAlertList() {
         String docName = etDocName.getText().toString().trim();
-        String docEmail = etDocEmail.getText().toString().trim();
+        /*String docEmail = etDocEmail.getText().toString().trim();
         int docPhone = Integer.parseInt(etDocPhone.getText().toString().trim());
 
         String careName = etCareName.getText().toString().trim();
@@ -80,27 +80,28 @@ public class AlertListDetailsActivity extends AppCompatActivity implements View.
 
         String familyName = etFamilyName.getText().toString().trim();
         String familyEmail = etFamilyEmail.getText().toString().trim();
-        int familyPhone = Integer.parseInt(etFamilyPhone.getText().toString().trim());
+        int familyPhone = Integer.parseInt(etFamilyPhone.getText().toString().trim());*/
 
-        if(isAlertListEmpty(docName,docEmail,docPhone,careName,careEmail,carePhone,familyName,familyEmail,familyPhone)){
+        /*if(isAlertListEmpty(docName,docEmail,docPhone,careName,careEmail,carePhone,familyName,familyEmail,familyPhone)){
             Toast.makeText(this, "Please submit at least one alert contact", Toast.LENGTH_LONG).show();
             return;
-        }
-        else{
+        }*/
+        //else{
             progressDialog.setMessage("Submitting Information. Please Wait...");
             progressDialog.show();
 
-            AlertContact docDetails = new AlertContact(docName,"Doctor",docEmail,docPhone);
+            AlertContact docDetails = new AlertContact(docName,"Doctor","doc@gmail.com","1234567890");
+            /*AlertContact docDetails = new AlertContact(docName,"Doctor",docEmail,docPhone);
             AlertContact caregiverDetails = new AlertContact(careName,"CareGiver",careEmail,carePhone);
             AlertContact familyDetails = new AlertContact(familyName,"Family",familyEmail,familyPhone);
-
+*/
             FirebaseUser currUser = firebaseAuth.getCurrentUser();
             dbReference.child(currUser.getUid()).setValue(docDetails);
-            dbReference.child(currUser.getUid()).setValue(caregiverDetails);
-            dbReference.child(currUser.getUid()).setValue(familyDetails);
+            /*dbReference.child(currUser.getUid()).setValue(caregiverDetails);
+            dbReference.child(currUser.getUid()).setValue(familyDetails);*/
 
             Toast.makeText(this, "Information saved...", Toast.LENGTH_LONG).show();
-        }
+        //}
     }
 
     private boolean isAlertListEmpty(String dName, String dEmail, int dPhone,

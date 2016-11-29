@@ -50,7 +50,7 @@ public class AlertListActivity extends AppCompatActivity implements View.OnClick
             startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
         }*/
 
-        etDocName = (EditText) findViewById(R.id.etDcoName);
+        /*etDocName = (EditText) findViewById(R.id.etDcoName);
         etDocEmail = (EditText) findViewById(R.id.etDocEmail);
         etDocPhone = (EditText) findViewById(R.id.etDocPhone);
         etCareName = (EditText) findViewById(R.id.etCareName);
@@ -59,7 +59,7 @@ public class AlertListActivity extends AppCompatActivity implements View.OnClick
         etFamilyName = (EditText) findViewById(R.id.etFamilyName);
         etFamilyEmail = (EditText) findViewById(R.id.etFamilyEmail);
         etFamilyPhone = (EditText) findViewById(R.id.etFamilyPhone);
-
+*/
         mAlertSaveButton = (Button) findViewById(R.id.btnSaveAlertList);
         mAlertSaveButton.setOnClickListener(this);
 
@@ -70,29 +70,29 @@ public class AlertListActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void saveAlertList() {
-        String docName = etDocName.getText().toString().trim();
+        /*String docName = etDocName.getText().toString().trim();
         String docEmail = etDocEmail.getText().toString().trim();
-        int docPhone = Integer.parseInt(etDocPhone.getText().toString().trim());
+        String docPhone = etDocPhone.getText().toString().trim();
 
         String careName = etCareName.getText().toString().trim();
         String careEmail = etCareEmail.getText().toString().trim();
-        int carePhone = Integer.parseInt(etCarePhone.getText().toString().trim());
+        String carePhone = etCarePhone.getText().toString().trim();
 
         String familyName = etFamilyName.getText().toString().trim();
         String familyEmail = etFamilyEmail.getText().toString().trim();
-        int familyPhone = Integer.parseInt(etFamilyPhone.getText().toString().trim());
+        String familyPhone = etFamilyPhone.getText().toString().trim();*/
 
-        if(isAlertListEmpty(docName,docEmail,docPhone,careName,careEmail,carePhone,familyName,familyEmail,familyPhone)){
+        /*if(isAlertListEmpty(docName,docEmail,docPhone,careName,careEmail,carePhone,familyName,familyEmail,familyPhone)){
             Toast.makeText(this, "Please submit at least one alert contact", Toast.LENGTH_LONG).show();
             return;
         }
-        else{
+        else{*/
             progressDialog.setMessage("Submitting Information. Please Wait...");
             progressDialog.show();
 
-            AlertContact docDetails = new AlertContact(docName,"Doctor",docEmail,docPhone);
-            AlertContact caregiverDetails = new AlertContact(careName,"CareGiver",careEmail,carePhone);
-            AlertContact familyDetails = new AlertContact(familyName,"Family",familyEmail,familyPhone);
+            AlertContact docDetails = new AlertContact("doc","Doctor","doc@gmail.com","1234567890");
+            AlertContact caregiverDetails = new AlertContact("care","CareGiver","care@gmail.com","2087654321");
+            AlertContact familyDetails = new AlertContact("family","Family","family@gmail.com","5432109876");
 
             AlertList alertList = new AlertList(docDetails,caregiverDetails,familyDetails);
 
@@ -103,7 +103,7 @@ public class AlertListActivity extends AppCompatActivity implements View.OnClick
             dbReference.child(currUser.getUid()).setValue(familyDetails);*/
 
             Toast.makeText(this, "AlertList saved...", Toast.LENGTH_LONG).show();
-        }
+        //}
     }
 
     private boolean isAlertListEmpty(String dName, String dEmail, int dPhone,

@@ -28,16 +28,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Doctor's Name:"
+            android:hint="Doctor's Name:"
             android:ems="10"
-            android:id="@+id/etDcoName"
-            android:hint="Name" />
+            android:id="@+id/etDcoName"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Email:"
             android:ems="10"
             android:id="@+id/etDocEmail"
             android:hint="@string/prompt_email" />
@@ -48,8 +46,7 @@
             android:inputType="phone"
             android:ems="10"
             android:id="@+id/etDocPhone"
-            android:text="Phone: "
-            android:hint="Phone" />
+            android:hint="Phone:" />
 
         <!--<EditText
             android:layout_width="match_parent"
@@ -62,19 +59,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Care Giver's Name:"
+            android:hint="Care Giver's Name:"
             android:ems="10"
-            android:id="@+id/etCareName"
-            android:hint="Name" />
+            android:id="@+id/etCareName"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Email:"
+            android:hint="@string/prompt_email"
             android:ems="10"
-            android:id="@+id/etCareEmail"
-            android:hint="@string/prompt_email" />
+            android:id="@+id/etCareEmail"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -82,22 +77,19 @@
             android:inputType="phone"
             android:ems="10"
             android:id="@+id/etCarePhone"
-            android:text="Phone: "
-            android:hint="Phone" />
+            android:hint="Phone:" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Family Member's Name:"
+            android:hint="Family Member's Name:"
             android:ems="10"
-            android:id="@+id/etFamilyName"
-            android:hint="Name" />
+            android:id="@+id/etFamilyName"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Email:"
             android:ems="10"
             android:id="@+id/etFamilyEmail"
             android:hint="@string/prompt_email" />
@@ -108,21 +100,19 @@
             android:inputType="phone"
             android:ems="10"
             android:id="@+id/etFamilyPhone"
-            android:text="Phone: "
-            android:hint="Phone" />
-        <Button
-            android:text="Back"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerInParent="true"
-            android:id="@+id/btnBackRegister" />
-
+            android:hint="Phone:" />
         <Button
             android:text="Submit"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:id="@+id/btnSaveAlertList" />
+        <Button
+            android:text="Back"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:id="@+id/btnBackRegister" />
     </LinearLayout>
     </ScrollView>
 </RelativeLayout>
