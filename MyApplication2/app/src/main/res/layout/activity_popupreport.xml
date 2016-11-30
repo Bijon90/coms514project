@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true">
+    <TextView
+        android:text="Select contact: "
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/textView" />
+        <CheckBox
+            android:id="@+id/checkBoxDoctor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Doctor"
+            android:layout_centerHorizontal="true" />
+        <CheckBox
+            android:id="@+id/checkBoxCareGiver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CareGiver"
+            android:layout_centerHorizontal="true" />
+        <CheckBox
+            android:id="@+id/checkBoxFamily"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Family"
+            android:layout_centerHorizontal="true" />
+        <Button
+            android:text="Send Report"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/btnSendReport"/>
+    </LinearLayout>
+</RelativeLayout>

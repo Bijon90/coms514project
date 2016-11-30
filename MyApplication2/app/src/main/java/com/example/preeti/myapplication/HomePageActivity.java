@@ -46,7 +46,7 @@ public class HomePageActivity extends AppCompatActivity {
                 startActivity(new Intent(this, AlertListDetailsActivity.class));
                 break;
             case R.id.action_report:
-
+                startActivity(new Intent(this, PopUpReportActivity.class));
                 break;
             case R.id.logout:
                 firebaseAuth.signOut();

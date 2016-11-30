@@ -30,6 +30,8 @@
         <activity android:name=".AlertListDetailsActivity" />
         <activity android:name=".UserProfileActivity" />
         <activity android:name=".AlertListActivity" />
+        <activity android:name=".PopUpReportActivity"
+            android:theme="@style/AppTheme.CustomTheme"></activity>
         <activity android:name=".HomePageActivity"></activity>
     </application>
 
