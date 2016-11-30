@@ -9,10 +9,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Set;
 
 import static android.text.TextUtils.*;
 
@@ -30,6 +33,7 @@ public class AlertListActivity extends AppCompatActivity implements View.OnClick
 
     private FirebaseAuth firebaseAuth;
     private DatabaseReference dbReference;
+    private Firebase fbRootRef;
 
     private Button mAlertSaveButton;
     private Button mBackButton;
@@ -42,6 +46,8 @@ public class AlertListActivity extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_alert_list);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        dbReference = FirebaseDatabase.getInstance().getReference();
+        //fbRootRef = new Firebase("https://pulsetracker-acdda.firebaseio.com/");
 
         //if getCurrentUser does not returns null
         if(firebaseAuth.getCurrentUser() == null){
@@ -95,8 +101,8 @@ public class AlertListActivity extends AppCompatActivity implements View.OnClick
             progressDialog.show();*/
 
             AlertContact docDetails = new AlertContact(docName,docRelation,docEmail,docPhone);
-            //AlertContact caregiverDetails = new AlertContact(careName,"CareGiver",careEmail,carePhone);
-            //AlertContact familyDetails = new AlertContact(familyName,"Family",familyEmail,familyPhone);
+            AlertContact caregiverDetails = new AlertContact(careName,"CareGiver",careEmail,carePhone);
+            AlertContact familyDetails = new AlertContact(familyName,"Family",familyEmail,familyPhone);
 
             //AlertList alertList = new AlertList(docDetails,caregiverDetails,familyDetails);
 
@@ -107,9 +113,11 @@ public class AlertListActivity extends AppCompatActivity implements View.OnClick
                 startActivity(new Intent(AlertListActivity.this, LoginActivity.class));
             }
             else{
-                //dbReference.child(currUser.getUid()).child("Doctor").setValue(docDetails);
-                //dbReference.child(currUser.getUid()).push().child("AlertCareGiverContact").setValue(caregiverDetails);
-                //dbReference.child(currUser.getUid()).push().child("AlertFamilyContact").setValue(familyDetails);
+                /*Firebase fbAlertRef = fbRootRef.child(currUser.getUid()).child("DocContact");
+                fbAlertRef.setValue(docDetails);*/
+                dbReference.child(currUser.getUid()).child("AlertDoctorContact").setValue(docDetails);
+                dbReference.child(currUser.getUid()).child("AlertCareGiverContact").setValue(caregiverDetails);
+                dbReference.child(currUser.getUid()).child("AlertFamilyContact").setValue(familyDetails);
                 Toast.makeText(this, "AlertList saved...!", Toast.LENGTH_LONG).show();
             }
         }
@@ -146,7 +154,7 @@ public class AlertListActivity extends AppCompatActivity implements View.OnClick
         if(view == mBackButton){
             finish();
             //open login activity when user taps on the already registered textview
-            startActivity(new Intent(this, HomePageActivity.class));
+            startActivity(new Intent(this, SetUpProfileActivity.class));
         }
     }
 }

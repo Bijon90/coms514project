@@ -14,7 +14,7 @@
                 android:id="@+id/action_userdetails"
                 android:title="User Profile Details"/>
             <item
-                android:id="@+id/action_alertlist"
+                android:id="@+id/action_alertlistdetails"
                 android:title="Alert List"/>
             <item
                 android:id="@+id/action_report"

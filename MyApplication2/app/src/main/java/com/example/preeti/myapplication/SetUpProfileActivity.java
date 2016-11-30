@@ -12,6 +12,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.firebase.client.Firebase;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -34,7 +35,7 @@ public class SetUpProfileActivity extends AppCompatActivity implements View.OnCl
     private EditText etMHistory;
 
     private Button mSaveDetailsButton;
-    //private Button mSetAlertListButton;
+    private Button mSetAlertListButton;
 
     private FirebaseAuth firebaseAuth;
     private DatabaseReference dbReference;
@@ -69,10 +70,10 @@ public class SetUpProfileActivity extends AppCompatActivity implements View.OnCl
         etHeartRate = (EditText) findViewById(R.id.etHeartRate);
         etMHistory = (EditText) findViewById(R.id.etMHistory);
         mSaveDetailsButton = (Button) findViewById(R.id.btnSaveDetails);
-        //mSetAlertListButton = (Button) findViewById(R.id.btnCreateList);
+        mSetAlertListButton = (Button) findViewById(R.id.btnCreateList);
 
         mSaveDetailsButton.setOnClickListener(this);
-        //mSetAlertListButton.setOnClickListener(this);
+        mSetAlertListButton.setOnClickListener(this);
 
         progressDialog = new ProgressDialog(this);
     }
@@ -92,7 +93,6 @@ public class SetUpProfileActivity extends AppCompatActivity implements View.OnCl
 
             FirebaseUser currUser = firebaseAuth.getCurrentUser();
             dbReference.child(currUser.getUid()).child("UserDetails").setValue(userDetails);
-            //dbReference.child(currUser.getUid()).setValue(userDetails);
 
             Toast.makeText(this, "Information saved...", Toast.LENGTH_LONG).show();
             startActivity(new Intent(SetUpProfileActivity.this, LoginActivity.class));
@@ -105,10 +105,10 @@ public class SetUpProfileActivity extends AppCompatActivity implements View.OnCl
             saveUserDetails();
         }
 
-        /*if(view == mSetAlertListButton){
+        if(view == mSetAlertListButton){
             //open login activity when user taps on the already registered textview
             startActivity(new Intent(SetUpProfileActivity.this, AlertListActivity.class));
-        }*/
+        }
 
     }
 }

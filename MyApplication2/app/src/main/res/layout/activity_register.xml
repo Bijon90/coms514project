@@ -80,14 +80,14 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/etMHistory"
                 android:hint="Medical History:" />
-            <!--<Button
+            <Button
                 android:text="Cretae Alert List"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:id="@+id/btnCreateList" />-->
+                android:id="@+id/btnCreateList" />
             <Button
                 android:text="Save"
                 android:layout_width="match_parent"
