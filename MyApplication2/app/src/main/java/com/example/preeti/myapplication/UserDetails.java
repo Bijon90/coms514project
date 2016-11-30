@@ -8,7 +8,7 @@ public class UserDetails {
     public String fName;
     public String lName;
     public String address;
-    //public String sex;
+    public String sex;
     public String age;
     public String weight;
     public String height;
@@ -17,11 +17,11 @@ public class UserDetails {
 
     public UserDetails(){}
 
-    public UserDetails(String fName, String lName, String address, String age, String weight, String height, String hRate, String mHistory) {
+    public UserDetails(String fName, String lName, String address, String sex, String age, String weight, String height, String hRate, String mHistory) {
         this.fName = fName;
         this.lName = lName;
         this.address = address;
-        //this.sex = sex;
+        this.sex = sex;
         this.age = age;
         this.weight = weight;
         this.height = height;

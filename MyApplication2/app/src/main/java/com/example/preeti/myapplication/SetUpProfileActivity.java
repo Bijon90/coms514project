@@ -89,7 +89,7 @@ public class SetUpProfileActivity extends AppCompatActivity implements View.OnCl
             String hRate = etHeartRate.getText().toString().trim();
             String mHistory = etMHistory.getText().toString().trim();
 
-            UserDetails userDetails = new UserDetails(fName, lName, address, age,weight, height, hRate, mHistory);
+            UserDetails userDetails = new UserDetails(fName, lName, address, sex, age,weight, height, hRate, mHistory);
 
             FirebaseUser currUser = firebaseAuth.getCurrentUser();
             dbReference.child(currUser.getUid()).child("UserDetails").setValue(userDetails);

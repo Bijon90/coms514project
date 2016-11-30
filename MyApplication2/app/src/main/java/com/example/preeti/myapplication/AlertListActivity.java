@@ -142,7 +142,7 @@ public class AlertListActivity extends AppCompatActivity implements View.OnClick
         }
         String error = dError+cError+fError;
         Toast.makeText(this,error,Toast.LENGTH_LONG).show();
-        return (d&&c&&f);
+        return (d||c||f);
     }
 
     @Override
