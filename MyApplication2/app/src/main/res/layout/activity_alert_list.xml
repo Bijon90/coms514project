@@ -27,78 +27,52 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
             android:hint="Doctor's Name:"
-            android:ems="10"
             android:id="@+id/etDcoName"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
             android:id="@+id/etDocEmail"
             android:hint="@string/prompt_email" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="phone"
-            android:ems="10"
             android:id="@+id/etDocPhone"
             android:hint="Phone:" />
-
-        <!--<EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:text="Relation:"
-            android:ems="10"
-            android:id="@+id/editText15" />-->
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="Care Giver's Name:"
-            android:ems="10"
+            android:hint="Care-Giver's Name:"
             android:id="@+id/etCareName"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
             android:hint="@string/prompt_email"
-            android:ems="10"
             android:id="@+id/etCareEmail"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="phone"
-            android:ems="10"
             android:id="@+id/etCarePhone"
             android:hint="Phone:" />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="Family Member's Name:"
-            android:ems="10"
+            android:hint="Family-Member's Name:"
             android:id="@+id/etFamilyName"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
             android:id="@+id/etFamilyEmail"
             android:hint="@string/prompt_email" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="phone"
-            android:ems="10"
             android:id="@+id/etFamilyPhone"
             android:hint="Phone:" />
         <Button

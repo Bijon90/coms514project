@@ -36,11 +36,14 @@ public class HomePageActivity extends AppCompatActivity {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         //noinspection SimplifiableIfStatement
         switch(id){
+            /*case R.id.action_setupdetails:
+                startActivity(new Intent(this,SetUpProfileActivity.class));
+                break;*/
             case R.id.action_userdetails:
                 startActivity(new Intent(this, UserProfileActivity.class));
                 break;
-            case R.id.action_alertlistdetails:
-                startActivity(new Intent(this, AlertListDetailsActivity.class));
+            case R.id.action_alertlist:
+                startActivity(new Intent(this, AlertListActivity.class));
                 break;
             case R.id.action_report:
 

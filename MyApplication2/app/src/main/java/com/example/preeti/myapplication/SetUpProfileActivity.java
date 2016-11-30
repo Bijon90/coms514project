@@ -5,12 +5,9 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -28,7 +25,8 @@ public class SetUpProfileActivity extends AppCompatActivity implements View.OnCl
     private EditText etFname;
     private EditText etLname;
     private EditText etAddress;
-    private RadioGroup etSex;
+    /*private RadioGroup etSex;
+    private RadioButton etSelectedSex;*/
     private EditText etAge;
     private EditText etWeight;
     private EditText etHeight;
@@ -36,7 +34,7 @@ public class SetUpProfileActivity extends AppCompatActivity implements View.OnCl
     private EditText etMHistory;
 
     private Button mSaveDetailsButton;
-    private Button mSetAlertListButton;
+    //private Button mSetAlertListButton;
 
     private FirebaseAuth firebaseAuth;
     private DatabaseReference dbReference;
@@ -57,56 +55,44 @@ public class SetUpProfileActivity extends AppCompatActivity implements View.OnCl
             //and open homepage activity
             startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
         }*/
+        FirebaseUser currUser = firebaseAuth.getCurrentUser();
+        dbReference = FirebaseDatabase.getInstance().getReference();
 
         etFname = (EditText) findViewById(R.id.etFname);
         etLname = (EditText) findViewById(R.id.etLname);
         etAddress = (EditText) findViewById(R.id.etAddress);
-        etSex = (RadioGroup) findViewById(R.id.rgSex);
-
+        /*etSex = (RadioGroup) findViewById(R.id.rgSex);
+        etSelectedSex = (RadioButton) findViewById(etSex.getCheckedRadioButtonId());*/
         etAge = (EditText) findViewById(R.id.etAge);
         etWeight = (EditText) findViewById(R.id.etWeight);
         etHeight = (EditText) findViewById(R.id.etHeight);
         etHeartRate = (EditText) findViewById(R.id.etHeartRate);
         etMHistory = (EditText) findViewById(R.id.etMHistory);
-
-        /*FirebaseUser currUser = firebaseAuth.getCurrentUser();
-        dbReference = FirebaseDatabase.getInstance().getReference();*/
-
         mSaveDetailsButton = (Button) findViewById(R.id.btnSaveDetails);
-        mSaveDetailsButton.setOnClickListener(this);
+        //mSetAlertListButton = (Button) findViewById(R.id.btnCreateList);
 
-        mSetAlertListButton = (Button) findViewById(R.id.btnCreateList);
-        mSetAlertListButton.setOnClickListener(this);
-        /*mEmailSignInButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                attemptLogin();
-            }
-        });*/
-        /*mRegisterSubmitButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent homepageIntent = new Intent(RegisterActivity.this, HomePageActivity.class);
-                RegisterActivity.this.startActivity(homepageIntent);
-            }
-        });*/
+        mSaveDetailsButton.setOnClickListener(this);
+        //mSetAlertListButton.setOnClickListener(this);
+
         progressDialog = new ProgressDialog(this);
     }
     private void saveUserDetails(){
             String fName = etFname.getText().toString().trim();
             String lName = etLname.getText().toString().trim();
             String address = etAddress.getText().toString().trim();
-            String sex = ((RadioButton)findViewById(etSex.getCheckedRadioButtonId())).getText().toString();
-            int age = Integer.parseInt(etAge.getText().toString().trim());
-            double weight = Double.parseDouble(etWeight.getText().toString().trim());
-            double height = Double.parseDouble(etHeight.getText().toString().trim());
-            double hRate = Double.parseDouble(etHeartRate.getText().toString().trim());
+            //String sex = etSelectedSex.getText().toString().trim();
+            String sex = "Male";
+            String age = etAge.getText().toString().trim();
+            String weight = etWeight.getText().toString().trim();
+            String height = etHeight.getText().toString().trim();
+            String hRate = etHeartRate.getText().toString().trim();
             String mHistory = etMHistory.getText().toString().trim();
 
-            UserDetails userDetails = new UserDetails(fName, lName, address, sex, age,
-                    weight, height, hRate, mHistory);
+            UserDetails userDetails = new UserDetails(fName, lName, address, age,weight, height, hRate, mHistory);
+
             FirebaseUser currUser = firebaseAuth.getCurrentUser();
             dbReference.child(currUser.getUid()).child("UserDetails").setValue(userDetails);
+            //dbReference.child(currUser.getUid()).setValue(userDetails);
 
             Toast.makeText(this, "Information saved...", Toast.LENGTH_LONG).show();
             startActivity(new Intent(SetUpProfileActivity.this, LoginActivity.class));
@@ -119,11 +105,10 @@ public class SetUpProfileActivity extends AppCompatActivity implements View.OnCl
             saveUserDetails();
         }
 
-        if(view == mSetAlertListButton){
-            finish();
+        /*if(view == mSetAlertListButton){
             //open login activity when user taps on the already registered textview
             startActivity(new Intent(SetUpProfileActivity.this, AlertListActivity.class));
-        }
+        }*/
 
     }
 }

@@ -7,11 +7,14 @@
         android:orderInCategory="100"
         android:title="Menu">
         <menu>
+            <!--<item
+                android:id="@+id/action_setupdetails"
+                android:title="Set Up Profile Details"/>-->
             <item
                 android:id="@+id/action_userdetails"
                 android:title="User Profile Details"/>
             <item
-                android:id="@+id/action_alertlistdetails"
+                android:id="@+id/action_alertlist"
                 android:title="Alert List"/>
             <item
                 android:id="@+id/action_report"
