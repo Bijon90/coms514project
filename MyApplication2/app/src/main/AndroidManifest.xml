@@ -27,6 +27,8 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".UserProfileActivity" />
         <activity android:name=".AlertListActivity" />
+        <activity android:name=".EmailActivity" />
+        <activity android:name=".SmsActivity" />
         <activity android:name=".HomePageActivity"></activity>
     </application>
 
