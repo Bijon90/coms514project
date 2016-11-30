@@ -17,17 +17,21 @@
         <activity
             android:name=".Splash"
             android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
-        <activity android:name=".RegisterActivity" />
+        <activity android:name=".SignUpActivity" />
         <activity android:name=".UserProfileActivity" />
         <activity android:name=".AlertListActivity" />
-        <activity android:name=".HomePageActivity"></activity>
+        <activity android:name=".HomePageActivity"/>
+        <activity android:name=".DisplayScreen">
+            <intent-filter>
+                <data android:scheme="myapp" android:host="hello"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

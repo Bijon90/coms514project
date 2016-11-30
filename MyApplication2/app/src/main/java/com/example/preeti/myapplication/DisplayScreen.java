@@ -1,7 +1,11 @@
 package com.example.preeti.myapplication;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import com.jjoe64.graphview.GraphView;
@@ -17,6 +21,8 @@ public class DisplayScreen extends AppCompatActivity {
     private static final Random RANDOM=new Random();
     private int lastX=0;
     private RelativeLayout mainLayout;
+    private Button submit;
+    private String url="http://www.fitbit.com"; //specify the URL here
     //private LineChart mChart;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +33,21 @@ public class DisplayScreen extends AppCompatActivity {
         graph.addSeries(series);
         Viewport viewport = graph.getViewport();
         viewport.setYAxisBoundsManual(true);
-        viewport.setMinY(0);
+        viewport.setMinY(40);
         viewport.setMaxY(100);
-        viewport.setScrollable(true);
+        //viewport.setScrollable(true);
+        submit = (Button) findViewById(R.id.submit);
+        submit.setOnClickListener(new View.OnClickListener(){
+            @Override
+            //On click function
+            public void onClick(View view) {
+                //Create the intent to start another activity
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(url));
+                intent.setData(Uri.parse(url));
+                startActivity(intent);
+            }
+        });
 
     }
     protected void onResume()
@@ -59,4 +77,6 @@ public class DisplayScreen extends AppCompatActivity {
     {
         series.appendData(new DataPoint(lastX++, RANDOM.nextDouble() * 100 ),true,10);
     }
+
+
 }
