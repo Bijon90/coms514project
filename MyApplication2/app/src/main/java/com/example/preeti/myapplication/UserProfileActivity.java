@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.firebase.client.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -19,14 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
-
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
 public class UserProfileActivity extends AppCompatActivity implements View.OnClickListener{
-    //private static final String TAG = "User Profile Details";
+    private static final String TAG = "User Profile Details";
 
     private EditText tvFname;
     private EditText tvLname;
@@ -41,13 +34,13 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
     private Button mBackToHome;
     private Button mModify;
 
-    //private Firebase fbRef;
-    //private FirebaseAuth firebaseAuth;
-    //private DatabaseReference userdbRef;
+    private FirebaseAuth firebaseAuth;
+    private DatabaseReference userdbRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+        firebaseAuth = FirebaseAuth.getInstance();
 
         tvFname = (EditText) findViewById(R.id.tvfName);
         tvLname = (EditText) findViewById(R.id.tvlName);
@@ -59,7 +52,7 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         tvHeartRate = (EditText) findViewById(R.id.tvHeartRate);
         tvMHistory = (EditText) findViewById(R.id.tvMHistory);
 
-        UserDetails udetails = new UserDetails("Bijon","Bose","Ames","Male","26","162","174","85","None");
+        /*UserDetails udetails = new UserDetails("Bijon","Bose","Ames","Male","26","162","174","85","None");
         String fname = udetails.fName;
         String lname = udetails.lName;
         String address = udetails.address;
@@ -78,26 +71,24 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         tvWeight.setText(weight);
         tvHeight.setText(height);
         tvHeartRate.setText(hrate);
-        tvMHistory.setText(mHistory);
-        //FirebaseUser currUser = firebaseAuth.getCurrentUser();
-/*        final String uid = currUser.getUid();
-        tvFname.setText(uid);*/
-        //`
-        /*ValueEventListener userListener = new ValueEventListener() {
+        tvMHistory.setText(mHistory);*/
+        FirebaseUser currUser = firebaseAuth.getCurrentUser();
+        final String uid = currUser.getUid();
+        userdbRef = FirebaseDatabase.getInstance().getReference().child(uid).child("UserDetails");
+        //tvFname.setText(uid);*/
+        userdbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                DataSnapshot usersnapShopt = dataSnapshot.child(uid).child("UserDetails");
-                //UserDetails userDetails = usersnapShopt.getValue();
-                *//*Log.v("Data: ", String.valueOf(userDetails.toString()));
-                String fname = userDetails.fName;
-                String lname = userDetails.lName;
-                String address = userDetails.address;
-                String age = userDetails.age;
-                String sex = userDetails.sex;
-                String weight = userDetails.weight;
-                String height = userDetails.height;
-                String hrate = userDetails.hRate;
-                String mHistory = userDetails.mHistory;
+                UserDetails userDetails = (UserDetails) dataSnapshot.getValue(UserDetails.class);
+                String fname = String.valueOf(userDetails.fName);
+                String lname = String.valueOf(userDetails.lName);
+                String address = String.valueOf(userDetails.address);
+                String age = String.valueOf(userDetails.age);
+                String sex = String.valueOf(userDetails.sex);
+                String weight = String.valueOf(userDetails.weight);
+                String height = String.valueOf(userDetails.height);
+                String hrate = String.valueOf(userDetails.hRate);
+                String mHistory = String.valueOf(userDetails.mHistory);
 
                 tvFname.setText(fname);
                 tvLname.setText(lname);
@@ -107,15 +98,14 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
                 tvWeight.setText(weight);
                 tvHeight.setText(height);
                 tvHeartRate.setText(hrate);
-                tvMHistory.setText(mHistory);*//*
+                tvMHistory.setText(mHistory);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.w(TAG, "loadUserDetails:onCancelled", databaseError.toException());
             }
-        };
-        userdbRef.addValueEventListener(userListener);*/
+        });
         mBackToHome = (Button) findViewById(R.id.btnBackHomePage);
         mModify = (Button)findViewById(R.id.btnModify);
         mBackToHome.setOnClickListener(this);
@@ -126,8 +116,8 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         String fName = tvFname.getText().toString().trim();
         String lName = tvLname.getText().toString().trim();
         String address = tvAddress.getText().toString().trim();
-        //String sex = etSelectedSex.getText().toString().trim();
-        String sex = "Male";
+        String sex = tvSex.getText().toString().trim();
+        //String sex = "Male";
         String age = tvAge.getText().toString().trim();
         String weight = tvWeight.getText().toString().trim();
         String height = tvHeight.getText().toString().trim();

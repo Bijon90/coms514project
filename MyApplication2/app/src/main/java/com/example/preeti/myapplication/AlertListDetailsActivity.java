@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,8 +12,11 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import static android.text.TextUtils.isEmpty;
 
@@ -32,9 +36,10 @@ public class AlertListDetailsActivity extends AppCompatActivity implements View.
     private Button mBackHomepageButton;
 
     private FirebaseAuth firebaseAuth;
-    private DatabaseReference dbReference;
+    private DatabaseReference dbReference, dbDocRef,dbCareRef, dbFamilyRef;
 
     private ProgressDialog progressDialog;
+    public static final String TAG = "Alert Contact Details";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +47,7 @@ public class AlertListDetailsActivity extends AppCompatActivity implements View.
         setContentView(R.layout.activity_alert_list_details);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        dbReference = FirebaseDatabase.getInstance().getReference();
+        dbReference = FirebaseDatabase.getInstance().getReference().child(firebaseAuth.getCurrentUser().getUid());
         /*//if getCurrentUser does not returns null
         if(firebaseAuth.getCurrentUser() != null){
             //that means user is already logged in, so close this activity
@@ -61,7 +66,11 @@ public class AlertListDetailsActivity extends AppCompatActivity implements View.
         etFamilyEmail = (EditText) findViewById(R.id.tvFamilyEmail);
         etFamilyPhone = (EditText) findViewById(R.id.tvFamilyPhone);
 
-        AlertContact doc = new AlertContact("David","Doctor","david@gmail.com","+1 111 222 3344");
+        dbDocRef = dbReference.child("AlertDoctorContact");
+        dbCareRef = dbReference.child("AlertCareGiverContact");
+        dbCareRef = dbReference.child("AlertFamilyContact");
+
+        /*AlertContact doc = new AlertContact("David","Doctor","david@gmail.com","+1 111 222 3344");
         AlertContact care = new AlertContact("Alice","CareGiver","alice@gmail.com","+1 222 333 4455");
         AlertContact family = new AlertContact("Rob","Family","rob@gmail.com","+1 333 444 5566");
 
@@ -76,6 +85,60 @@ public class AlertListDetailsActivity extends AppCompatActivity implements View.
         etFamilyName.setText(family.name);
         etFamilyEmail.setText(family.email);
         etFamilyPhone.setText(family.phone);
+*/
+        dbDocRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                AlertContact doc = (AlertContact) dataSnapshot.getValue();
+                String docName = String.valueOf(doc.name);
+                String docEmail = String.valueOf(doc.email);
+                String docPhone = String.valueOf(doc.phone);
+
+                etDocName.setText(docName);
+                etDocEmail.setText(docEmail);
+                etDocPhone.setText(docPhone);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "loadContactDetails:onCancelled", databaseError.toException());
+            }
+        });
+
+        dbCareRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                AlertContact care = (AlertContact) dataSnapshot.getValue();
+                String careName = String.valueOf(care.name);
+                String careEmail = String.valueOf(care.email);
+                String carePhone = String.valueOf(care.phone);
+
+                etCareName.setText(careName);
+                etCareEmail.setText(careEmail);
+                etCarePhone.setText(carePhone);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "loadContactDetails:onCancelled", databaseError.toException());
+            }
+        });
+
+        dbFamilyRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                AlertContact family = (AlertContact) dataSnapshot.getValue();
+                String familyName = String.valueOf(family.name);
+                String familyEmail = String.valueOf(family.email);
+                String familyPhone = String.valueOf(family.phone);
+
+                etFamilyName.setText(familyEmail);
+                etFamilyEmail.setText(familyEmail);
+                etFamilyPhone.setText(familyPhone);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.w(TAG, "loadContactDetails:onCancelled", databaseError.toException());
+            }
+        });
 
         mModifyAlertSaveButton = (Button) findViewById(R.id.btnModifyAlertList);
         mModifyAlertSaveButton.setOnClickListener(this);

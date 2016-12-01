@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name=".MyApplication2">
+        android:name=".SendNotification">
         <activity
             android:name=".Splash"
             android:label="@string/app_name">
