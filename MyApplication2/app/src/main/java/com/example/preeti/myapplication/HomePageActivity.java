@@ -1,23 +1,85 @@
 package com.example.preeti.myapplication;
 
 import android.content.Intent;
+import android.preference.DialogPreference;
+import android.support.annotation.IntegerRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.*;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.Random;
+
 public class HomePageActivity extends AppCompatActivity {
+    private TextView tvHRBox, tvMaxHR, tvMinHR;
+    private double averageHR, maxHR = Integer.MIN_VALUE, minHR = Integer.MAX_VALUE, total = 0.0;
+    private ArrayList<Integer> heartRates;
+
+    private Handler mHandler;
+    Runnable myTask = new Runnable() {
+        @Override
+        public void run() {
+            setHeartbeat();
+            mHandler.postDelayed(this, 1000);
+        }
+    };
+    //just as an example, we'll start the task when the activity is started
+    @Override
+    public void onStart() {
+        super.onStart();
+        mHandler.postDelayed(myTask, 1000);
+    }
+
+    //at some point in your program you will probably want the handler to stop (in onStop is a good place)
+    @Override
+    public void onStop() {
+        super.onStop();
+        mHandler.removeCallbacks(myTask);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+        tvHRBox = (TextView) findViewById(R.id.textCurrHR);
+        tvMaxHR = (TextView) findViewById(R.id.textMaxHR);
+        tvMinHR = (TextView) findViewById(R.id.textMinHR);
+        heartRates = new ArrayList<Integer>();
+        mHandler = new Handler(Looper.getMainLooper());
+    }
+
+    private void setHeartbeat() {
+        //while(true) {
+                int value = generateData();
+                String val = String.valueOf(value);
+                tvHRBox.setText(val);
+                if(value > maxHR)
+                    maxHR = value;
+                if(value<minHR)
+                    minHR = value;
+                total += value;
+                heartRates.add(value);
+                averageHR = total/heartRates.size();
+                String maxHearRate = String.valueOf(maxHR);
+                String minHeartRAte = String.valueOf(minHR);
+                tvMaxHR.setText(maxHearRate);
+                tvMinHR.setText(minHeartRAte);
+                trackHeartRate(value);
+        //}
     }
 
     @Override
@@ -36,14 +98,17 @@ public class HomePageActivity extends AppCompatActivity {
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         //noinspection SimplifiableIfStatement
         switch(id){
+            /*case R.id.action_setupdetails:
+                startActivity(new Intent(this,SetUpProfileActivity.class));
+                break;*/
             case R.id.action_userdetails:
                 startActivity(new Intent(this, UserProfileActivity.class));
                 break;
-            case R.id.action_alertlist:
+            case R.id.action_alertlistdetails:
                 startActivity(new Intent(this, AlertListDetailsActivity.class));
                 break;
             case R.id.action_report:
-
+                startActivity(new Intent(this, PopUpReportActivity.class));
                 break;
             case R.id.logout:
                 firebaseAuth.signOut();
@@ -53,5 +118,41 @@ public class HomePageActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void trackHeartRate(int val){
+        if(val > 95)
+        {
+            /*AlertDialog.Builder builder1 = new AlertDialog.Builder(getApplicationContext());
+            builder1.setMessage("HeartRate Critical!!! SendReport?");
+            builder1.setCancelable(true);
+
+            *//*builder1.setPositiveButton(
+                    "Yes",
+                    new Dialog.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            builder1.setNegativeButton(
+                    "No",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+*//*
+            AlertDialog alert11 = builder1.create();
+            alert11.show();*/
+            Toast.makeText(this, "HeartRate Critical! Please Send a report!", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private int generateData(){
+        int lowerBound = 95;
+        int upperBound = 105;
+        int val = (int) (Math.random() * (upperBound - lowerBound)) + lowerBound;
+        return val;
     }
 }

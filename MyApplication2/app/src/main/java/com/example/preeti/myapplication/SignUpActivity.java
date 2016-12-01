@@ -37,7 +37,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_signup);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -59,8 +59,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         progressDialog = new ProgressDialog(this);
     }
     private void registerUser(){
-        String email = etEmail.getText().toString().trim();
-        String password  = etPassword.getText().toString().trim();
+        final String email = etEmail.getText().toString().trim();
+        final String password  = etPassword.getText().toString().trim();
         String cPassword  = etCPassword.getText().toString().trim();
         if(isPasswordMatch(password,cPassword)) {
             //checking if email and passwords are empty
@@ -80,7 +80,16 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                             progressDialog.dismiss();
                             if (task.isSuccessful()) {
                                 Toast.makeText(SignUpActivity.this, "Signing Up...", Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(SignUpActivity.this, SetUpProfileActivity.class));
+                                firebaseAuth.signInWithEmailAndPassword(email, password)
+                                        .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                                if(task.isSuccessful()){
+                                                    //finish();
+                                                    startActivity(new Intent(SignUpActivity.this, SetUpProfileActivity.class));
+                                                }
+                                            }
+                                        });
                             } else {
                                 Log.e("Error!", task.getException().toString());
                                 Toast.makeText(SignUpActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
