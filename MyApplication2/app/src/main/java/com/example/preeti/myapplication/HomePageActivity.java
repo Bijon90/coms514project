@@ -8,11 +8,13 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.*;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -25,6 +27,30 @@ public class HomePageActivity extends AppCompatActivity {
     private TextView tvHRBox, tvMaxHR, tvMinHR;
     private double averageHR, maxHR = Integer.MIN_VALUE, minHR = Integer.MAX_VALUE, total = 0.0;
     private ArrayList<Integer> heartRates;
+
+    private Handler mHandler;
+    Runnable myTask = new Runnable() {
+        @Override
+        public void run() {
+            setHeartbeat();
+            mHandler.postDelayed(this, 1000);
+        }
+    };
+    //just as an example, we'll start the task when the activity is started
+    @Override
+    public void onStart() {
+        super.onStart();
+        mHandler.postDelayed(myTask, 1000);
+    }
+
+    //at some point in your program you will probably want the handler to stop (in onStop is a good place)
+    @Override
+    public void onStop() {
+        super.onStop();
+        mHandler.removeCallbacks(myTask);
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +59,7 @@ public class HomePageActivity extends AppCompatActivity {
         tvMaxHR = (TextView) findViewById(R.id.textMaxHR);
         tvMinHR = (TextView) findViewById(R.id.textMinHR);
         heartRates = new ArrayList<Integer>();
-        setHeartbeat();
+        mHandler = new Handler(Looper.getMainLooper());
     }
 
     private void setHeartbeat() {
@@ -52,7 +78,7 @@ public class HomePageActivity extends AppCompatActivity {
                 String minHeartRAte = String.valueOf(minHR);
                 tvMaxHR.setText(maxHearRate);
                 tvMinHR.setText(minHeartRAte);
-                //trackHeartRate(value);
+                trackHeartRate(value);
         //}
     }
 
@@ -97,11 +123,11 @@ public class HomePageActivity extends AppCompatActivity {
     private void trackHeartRate(int val){
         if(val > 95)
         {
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(getApplicationContext());
+            /*AlertDialog.Builder builder1 = new AlertDialog.Builder(getApplicationContext());
             builder1.setMessage("HeartRate Critical!!! SendReport?");
             builder1.setCancelable(true);
 
-            /*builder1.setPositiveButton(
+            *//*builder1.setPositiveButton(
                     "Yes",
                     new Dialog.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
@@ -116,9 +142,10 @@ public class HomePageActivity extends AppCompatActivity {
                             dialog.cancel();
                         }
                     });
-*/
+*//*
             AlertDialog alert11 = builder1.create();
-            alert11.show();
+            alert11.show();*/
+            Toast.makeText(this, "HeartRate Critical! Please Send a report!", Toast.LENGTH_LONG).show();
         }
     }
 
