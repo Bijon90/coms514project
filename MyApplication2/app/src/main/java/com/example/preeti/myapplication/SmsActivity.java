@@ -41,7 +41,7 @@ public class SmsActivity extends AppCompatActivity {
 
         smsIntent.setData(Uri.parse("smsto:"));
         smsIntent.setType("vnd.android-dir/mms-sms");
-        smsIntent.putExtra("address"  , new String ("+15179402778"));
+        smsIntent.putExtra("address"  , new String ("5179402778"));
         smsIntent.putExtra("sms_body"  , "Test ");
 
         try {
@@ -51,7 +51,7 @@ public class SmsActivity extends AppCompatActivity {
         } catch (android.content.ActivityNotFoundException ex) {
             ex.printStackTrace();
             Toast.makeText(SmsActivity.this,
-                    "SMS faild, please try again later.", Toast.LENGTH_SHORT).show();
+                    "SMS failed, please try again later.", Toast.LENGTH_SHORT).show();
         }
     }
 
