@@ -52,7 +52,7 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         tvHeartRate = (EditText) findViewById(R.id.tvHeartRate);
         tvMHistory = (EditText) findViewById(R.id.tvMHistory);
 
-        /*UserDetails udetails = new UserDetails("Bijon","Bose","Ames","Male","26","162","174","85","None");
+        UserDetails udetails = new UserDetails("Bijon","Bose","Ames","Male","26","162","174","85","None");
         String fname = udetails.fName;
         String lname = udetails.lName;
         String address = udetails.address;
@@ -71,11 +71,10 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         tvWeight.setText(weight);
         tvHeight.setText(height);
         tvHeartRate.setText(hrate);
-        tvMHistory.setText(mHistory);*/
-        FirebaseUser currUser = firebaseAuth.getCurrentUser();
+        tvMHistory.setText(mHistory);
+        /*FirebaseUser currUser = firebaseAuth.getCurrentUser();
         final String uid = currUser.getUid();
         userdbRef = FirebaseDatabase.getInstance().getReference().child(uid).child("UserDetails");
-        //tvFname.setText(uid);*/
         userdbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -105,7 +104,7 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
             public void onCancelled(DatabaseError databaseError) {
                 Log.w(TAG, "loadUserDetails:onCancelled", databaseError.toException());
             }
-        });
+        });*/
         mBackToHome = (Button) findViewById(R.id.btnBackHomePage);
         mModify = (Button)findViewById(R.id.btnModify);
         mBackToHome.setOnClickListener(this);

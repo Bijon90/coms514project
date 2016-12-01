@@ -53,8 +53,8 @@ public class HomePageActivity extends AppCompatActivity {
     private String docName, docEmail, docPhone;
     private String careName, careEmail, carePhone;
     private String familyName, familyEmail, familyPhone;
-    private String ageS, hRateS;
-    private int age, hRate, maxHRate;
+    private String ageS = "25", hRateS = "85";
+    private int age, hRate = 85, maxHRate;
     private UserDetails ud;
 
     public static final String TAG = "AlertContact";
@@ -77,7 +77,7 @@ public class HomePageActivity extends AppCompatActivity {
     @Override
     public void onStop() {
         super.onStop();
-        firebaseAuth = FirebaseAuth.getInstance();
+        /*firebaseAuth = FirebaseAuth.getInstance();
         dbRef = FirebaseDatabase.getInstance().getReference().child(firebaseAuth.getCurrentUser().getUid());
         userRef = dbRef.child("UserDetails");
         userRef.addValueEventListener(new ValueEventListener() {
@@ -92,13 +92,13 @@ public class HomePageActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        });*/
         hRate = (int)((int)averageHR == 0 ? hRate : averageHR + hRate)/2;
-        ud.hRate = String.valueOf(hRate);
+        //ud.hRate = String.valueOf(hRate);
 
-        FirebaseUser currUser = firebaseAuth.getCurrentUser();
+        /*FirebaseUser currUser = firebaseAuth.getCurrentUser();
         dbRef = FirebaseDatabase.getInstance().getReference();
-        dbRef.child(currUser.getUid()).child("UserDetails").setValue(ud);
+        dbRef.child(currUser.getUid()).child("UserDetails").setValue(ud);*/
 
         mHandler.removeCallbacks(myTask);
     }
@@ -115,12 +115,12 @@ public class HomePageActivity extends AppCompatActivity {
         heartRates = new ArrayList<Integer>();
         mHandler = new Handler(Looper.getMainLooper());
 
-        firebaseAuth = FirebaseAuth.getInstance();
+        /*firebaseAuth = FirebaseAuth.getInstance();
         dbRef = FirebaseDatabase.getInstance().getReference().child(firebaseAuth.getCurrentUser().getUid());
         userRef = dbRef.child("UserDetails");
         docRef = dbRef.child("AlertDoctorContact");
         careRef = dbRef.child("AlertCareGiverContact");
-        familyRef = dbRef.child("AlertFamilyContact");
+        familyRef = dbRef.child("AlertFamilyContact");*/
 
         GraphView graph=(GraphView) findViewById(R.id.graph);
         series = new LineGraphSeries<DataPoint>();
@@ -132,7 +132,7 @@ public class HomePageActivity extends AppCompatActivity {
         viewport.scrollToEnd();
         viewport.setScrollable(true);
 
-        docRef.addValueEventListener(new ValueEventListener() {
+        /*docRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 AlertContact doc = (AlertContact) dataSnapshot.getValue();
@@ -185,7 +185,7 @@ public class HomePageActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
                 Log.w("UserDetails", "loadUserDetails:onCancelled", databaseError.toException());
             }
-        });
+        });*/
         maxHRate = 220 - Integer.parseInt(ageS);
     }
 
@@ -241,7 +241,7 @@ public class HomePageActivity extends AppCompatActivity {
     private void trackHeartRate(int val){
         if(isabNormal(val) || isCritical(val)) {
             Toast.makeText(this, "HeartRate Critical! Please Send a report!", Toast.LENGTH_LONG).show();
-            alertContacts();
+            //alertContacts();
         }
     }
 
@@ -259,19 +259,23 @@ public class HomePageActivity extends AppCompatActivity {
     }
 
     private void alertContacts() {
-        senderAddress[0]=docEmail;
+        senderAddress[0]="bhardwaj.preeti1992@gmail.com";
+        //senderAddress[0]=docEmail;
         sendEmail(senderAddress);
-        phoneNo = docPhone;
+        //phoneNo = "5157356367";
         sendSMSMessage();
 
-        senderAddress[0]=careEmail;
+        senderAddress[0]="bijonkumarbose90@gmail.com";
+        //senderAddress[0]=careEmail;
         sendEmail(senderAddress);
-        phoneNo = carePhone;
+        phoneNo = "5157356367";
+        //phoneNo = carePhone;
         sendSMSMessage();
 
-        senderAddress[0]=familyEmail;
+        //senderAddress[0]=familyEmail;
+        senderAddress[0]="bkbose@iastate.edu";
         sendEmail(senderAddress);
-        phoneNo = familyPhone;
+        //phoneNo = familyPhone;
         sendSMSMessage();
     }
 
