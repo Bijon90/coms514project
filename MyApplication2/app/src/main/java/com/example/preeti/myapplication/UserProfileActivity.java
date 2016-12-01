@@ -41,9 +41,9 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
     private Button mBackToHome;
     private Button mModify;
 
-   /* private Firebase fbRef;
-    private FirebaseAuth firebaseAuth;
-    private DatabaseReference userdbRef;*/
+    //private Firebase fbRef;
+    //private FirebaseAuth firebaseAuth;
+    //private DatabaseReference userdbRef;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,12 +82,12 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         //FirebaseUser currUser = firebaseAuth.getCurrentUser();
 /*        final String uid = currUser.getUid();
         tvFname.setText(uid);*/
-        //userdbRef = FirebaseDatabase.getInstance().getReference();
+        //`
         /*ValueEventListener userListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 DataSnapshot usersnapShopt = dataSnapshot.child(uid).child("UserDetails");
-                //UserDetails userDetails = usersnapShopt.getValue(UserDetails.class);
+                //UserDetails userDetails = usersnapShopt.getValue();
                 *//*Log.v("Data: ", String.valueOf(userDetails.toString()));
                 String fname = userDetails.fName;
                 String lname = userDetails.lName;
