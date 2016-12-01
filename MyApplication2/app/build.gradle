@@ -32,5 +32,11 @@ dependencies {
     compile 'com.google.firebase:firebase-core:9.6.1'
     testCompile 'junit:junit:4.12'
     compile 'com.jjoe64:graphview:4.2.1'
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.1'
+    compile 'me.wangyuwei:trend:1.0.0'
+    //compile 'com.github.PhilJay:MPAndroidChart-Realm:v2.0.2@aar'
+    //compile project(':MPChartLib')
+    //compile 'com.android.support:appcompat-v7:25.2.1'
+    compile 'com.google.android.gms:play-services-appindexing:9.6.1'
 }
 apply plugin: 'com.google.gms.google-services'

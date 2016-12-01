@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="registerButton" type="id" />
+    <item name="mainLayout" type="id" />
+    <item name="action_settings" type="id" />
 </resources>
