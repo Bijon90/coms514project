@@ -24,26 +24,21 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textPersonName"
-                android:ems="10"
                 android:id="@+id/etFname"
                 android:hint="First Name:" />
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:ems="10"
                 android:id="@+id/etLname"
                 android:hint="Last Name:" />
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="93dp"
-                android:inputType="textPostalAddress"
-                android:ems="10"
-                android:id="@+id/etAddress"/>
+                android:layout_height="wrap_content"
+                android:id="@+id/etAddress"
+                android:hint="Address:"/>
             <RadioGroup
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:id="@+id/rgSex">
                 <RadioButton
@@ -54,46 +49,35 @@
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checked="true"
                     android:id="@+id/Female"
                     android:text="Female"/>
             </RadioGroup>
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="number"
-                android:ems="10"
+                android:layout_height="wrap_content"
                 android:id="@+id/etAge"
                 android:hint="Age:" />
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="number"
-                android:ems="10"
+                android:layout_height="wrap_content"
                 android:id="@+id/etWeight"
                 android:hint="Weight:" />
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="number"
-                android:ems="10"
+                android:layout_height="wrap_content"
                 android:id="@+id/etHeight"
                 android:hint="Height:" />
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="number"
-                android:ems="10"
+                android:layout_height="wrap_content"
                 android:id="@+id/etHeartRate"
                 android:hint="HeartRate:" />
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="textMultiLine"
-                android:ems="10"
+                android:layout_height="wrap_content"
                 android:id="@+id/etMHistory"
                 android:hint="Medical History:" />
             <Button

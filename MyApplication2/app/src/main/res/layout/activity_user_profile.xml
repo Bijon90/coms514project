@@ -24,87 +24,66 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true">
 
-        <TextView
+        <EditText
             android:layout_width="match_parent"
-            android:layout_height="31dp"
-            android:inputType="textPersonName"
-            android:ems="10"
+            android:layout_height="wrap_content"
             android:id="@+id/tvfName"
-            android:text="First Name:" />
+            android:hint="First Name:" />
 
-        <TextView
+        <EditText
             android:layout_width="match_parent"
-            android:layout_height="31dp"
-            android:inputType="textPersonName"
-            android:ems="10"
+            android:layout_height="wrap_content"
             android:id="@+id/tvlName"
-            android:text="Last Name:" />
-
-        <TextView
+            android:hint="Last Name:" />
+        <EditText
             android:layout_width="match_parent"
-            android:layout_height="31dp"
-            android:inputType="textEmailAddress"
-            android:ems="10"
-            android:id="@+id/tvEmail"
-            android:text="@string/prompt_email"/>
-
-        <TextView
+            android:layout_height="wrap_content"
+            android:id="@+id/tvAddress"
+            android:hint="Address:"/>
+        <EditText
             android:layout_width="match_parent"
-            android:layout_height="31dp"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/tvUname"
-            android:text="UserName:" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="31dp"
-            android:inputType="number"
-            android:ems="10"
+            android:layout_height="wrap_content"
             android:id="@+id/tvAge"
-            android:text="Age:" />
+            android:hint="Age:" />
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="31dp"
-            android:inputType="textPersonName"
-            android:text="Sex:"
-            android:ems="10"
+            android:layout_height="wrap_content"
+            android:hint="Sex:"
             android:id="@+id/tvSex" />
 
-        <TextView
+        <EditText
             android:layout_width="match_parent"
-            android:layout_height="31dp"
-            android:inputType="number"
-            android:ems="10"
+            android:layout_height="wrap_content"
             android:id="@+id/tvWeight"
-            android:text="Weight:" />
+            android:hint="Weight:" />
 
-        <TextView
+        <EditText
             android:layout_width="match_parent"
-            android:layout_height="31dp"
-            android:inputType="number"
-            android:ems="10"
+            android:layout_height="wrap_content"
             android:id="@+id/tvHeight"
-            android:text="Height:" />
+            android:hint="Height:" />
 
-        <TextView
+        <EditText
             android:layout_width="match_parent"
-            android:layout_height="31dp"
-            android:inputType="number"
-            android:ems="10"
+            android:layout_height="wrap_content"
             android:id="@+id/tvHeartRate"
-            android:text="Average Heart Rate:" />
-        <TextView
+            android:hint="Average Heart Rate:" />
+        <EditText
             android:layout_width="match_parent"
-            android:layout_height="31dp"
-            android:inputType="textMultiLine"
-            android:ems="10"
+            android:layout_height="wrap_content"
             android:id="@+id/tvMHistory"
-            android:text="Medical History:" />
+            android:hint="Medical History:" />
+        <Button
+            android:text="Modify"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:id="@+id/btnModify" />
         <Button
             android:text="Back to Home Page"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:id="@+id/btnBackHomePage" />
     </LinearLayout>
