@@ -63,9 +63,9 @@ public class AlertListDetailsActivity extends AppCompatActivity implements View.
         dbCareRef = dbReference.child("AlertCareGiverContact");
         dbCareRef = dbReference.child("AlertFamilyContact");*/
 
-        AlertContact doc = new AlertContact("David","Doctor","david@gmail.com","+1 111 222 3344");
-        AlertContact care = new AlertContact("Alice","CareGiver","alice@gmail.com","+1 222 333 4455");
-        AlertContact family = new AlertContact("Rob","Family","rob@gmail.com","+1 333 444 5566");
+        AlertContact doc = new AlertContact("Preeti","Doctor","bhardwaj.preeti1992@gmail.com","5179402778");
+        AlertContact care = new AlertContact("Vijay","CareGiver","bvdeepak@iastate.edu","5157358106");
+        AlertContact family = new AlertContact("Bijon","Family","bijonkumarbose90@gmail.com","5157356367");
 
         etDocName.setText(doc.name);
         etDocEmail.setText(doc.email);
