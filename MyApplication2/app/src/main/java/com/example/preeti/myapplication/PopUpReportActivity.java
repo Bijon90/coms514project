@@ -129,7 +129,7 @@ public class PopUpReportActivity extends AppCompatActivity implements View.OnCli
         }
         if(care.isChecked()){
             Toast.makeText(this, "Report sent to CareGiver!", Toast.LENGTH_LONG).show();
-            senderAddress[0]="bvdeepak@iastate.edu";
+            senderAddress[0]="bkbose@iastate.edu";
             //senderAddress[0]=careEmail;
             sendEmail(senderAddress);
             //phoneNo = carePhone;

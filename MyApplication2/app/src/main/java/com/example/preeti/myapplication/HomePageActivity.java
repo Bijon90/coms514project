@@ -240,7 +240,7 @@ public class HomePageActivity extends AppCompatActivity {
 
     private void trackHeartRate(int val){
         if(isabNormal(val) || isCritical(val)) {
-            //Toast.makeText(this, "HeartRate Critical! Please Send a report!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "HeartRate Critical! Please Send a report!", Toast.LENGTH_LONG).show();
             //alertContacts();
         }
     }
@@ -265,22 +265,22 @@ public class HomePageActivity extends AppCompatActivity {
         //phoneNo = "5157356367";
         sendSMSMessage();
 
-        senderAddress[0]="bvdeepak@iastate.edu";
+        senderAddress[0]="bijonkumarbose90@gmail.com";
         //senderAddress[0]=careEmail;
         sendEmail(senderAddress);
-        //phoneNo = "5157356367";
+        phoneNo = "5157356367";
         //phoneNo = carePhone;
         sendSMSMessage();
 
         //senderAddress[0]=familyEmail;
-        senderAddress[0]="bijonkumarbose90@gmail.com";
+        senderAddress[0]="bkbose@iastate.edu";
         sendEmail(senderAddress);
         //phoneNo = familyPhone;
         sendSMSMessage();
     }
 
     private int generateData(){
-        int lowerBound = 70;
+        int lowerBound = 65;
         int upperBound = 100;
         int val = (int) (Math.random() * (upperBound - lowerBound)) + lowerBound;
         return val;
