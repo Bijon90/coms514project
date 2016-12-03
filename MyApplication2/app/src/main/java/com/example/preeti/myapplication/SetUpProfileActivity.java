@@ -12,10 +12,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.firebase.client.Firebase;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -26,8 +22,8 @@ public class SetUpProfileActivity extends AppCompatActivity implements View.OnCl
     private EditText etFname;
     private EditText etLname;
     private EditText etAddress;
-    /*private RadioGroup etSex;
-    private RadioButton etSelectedSex;*/
+    private RadioGroup etSex;
+    private RadioButton etSelectedSex;
     private EditText etAge;
     private EditText etWeight;
     private EditText etHeight;
@@ -62,8 +58,8 @@ public class SetUpProfileActivity extends AppCompatActivity implements View.OnCl
         etFname = (EditText) findViewById(R.id.etFname);
         etLname = (EditText) findViewById(R.id.etLname);
         etAddress = (EditText) findViewById(R.id.etAddress);
-        /*etSex = (RadioGroup) findViewById(R.id.rgSex);
-        etSelectedSex = (RadioButton) findViewById(etSex.getCheckedRadioButtonId());*/
+        etSex = (RadioGroup) findViewById(R.id.rgSex);
+        etSelectedSex = (RadioButton) findViewById(etSex.getCheckedRadioButtonId());
         etAge = (EditText) findViewById(R.id.etAge);
         etWeight = (EditText) findViewById(R.id.etWeight);
         etHeight = (EditText) findViewById(R.id.etHeight);
@@ -81,8 +77,8 @@ public class SetUpProfileActivity extends AppCompatActivity implements View.OnCl
             String fName = etFname.getText().toString().trim();
             String lName = etLname.getText().toString().trim();
             String address = etAddress.getText().toString().trim();
-            //String sex = etSelectedSex.getText().toString().trim();
-            String sex = "Male";
+            String sex = String.valueOf(etSelectedSex.getText().toString().trim());
+            //String sex = "Male";
             String age = etAge.getText().toString().trim();
             String weight = etWeight.getText().toString().trim();
             String height = etHeight.getText().toString().trim();
