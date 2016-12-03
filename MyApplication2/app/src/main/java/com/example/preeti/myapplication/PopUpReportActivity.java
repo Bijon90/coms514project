@@ -54,7 +54,7 @@ public class PopUpReportActivity extends AppCompatActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_popupreport);
-        /*firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
         dbRef = FirebaseDatabase.getInstance().getReference().child(firebaseAuth.getCurrentUser().getUid());
         docRef = dbRef.child("AlertDoctorContact");
         careRef = dbRef.child("AlertCareGiverContact");
@@ -101,7 +101,7 @@ public class PopUpReportActivity extends AppCompatActivity implements View.OnCli
                 Log.w(TAG, "loadContactDetails:onCancelled", databaseError.toException());
             }
         });
-*/
+
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -121,26 +121,26 @@ public class PopUpReportActivity extends AppCompatActivity implements View.OnCli
     private void sendReport(){
         if(doc.isChecked()){
             Toast.makeText(this, "Report sent to Doctor!", Toast.LENGTH_LONG).show();
-            senderAddress[0]="bhardwaj.preeti1992@gmail.com";
-            //senderAddress[0]=docEmail;
+            //senderAddress[0]="bhardwaj.preeti1992@gmail.com";
+            senderAddress[0]=docEmail;
             sendEmail(senderAddress);
-            //phoneNo = docPhone;
+            phoneNo = docPhone;
             sendSMSMessage();
         }
         if(care.isChecked()){
             Toast.makeText(this, "Report sent to CareGiver!", Toast.LENGTH_LONG).show();
-            senderAddress[0]="bkbose@iastate.edu";
-            //senderAddress[0]=careEmail;
+            //senderAddress[0]="bkbose@iastate.edu";
+            senderAddress[0]=careEmail;
             sendEmail(senderAddress);
-            //phoneNo = carePhone;
+            phoneNo = carePhone;
             sendSMSMessage();
         }
         if(family.isChecked()){
             Toast.makeText(this, "Report sent to Family!", Toast.LENGTH_LONG).show();
-            senderAddress[0]="bijonkumarbose90@gmail.com";
-            //senderAddress[0]=familyEmail;
+            //senderAddress[0]="bijonkumarbose90@gmail.com";
+            senderAddress[0]=familyEmail;
             sendEmail(senderAddress);
-            //phoneNo = familyPhone;
+            phoneNo = familyPhone;
             sendSMSMessage();
         }
     }

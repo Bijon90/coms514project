@@ -47,7 +47,14 @@ public class AlertListDetailsActivity extends AppCompatActivity implements View.
         setContentView(R.layout.activity_alert_list_details);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        dbReference = FirebaseDatabase.getInstance().getReference();
+        dbReference = FirebaseDatabase.getInstance().getReference().child(firebaseAuth.getCurrentUser().getUid());
+        /*//if getCurrentUser does not returns null
+        if(firebaseAuth.getCurrentUser() != null){
+            //that means user is already logged in, so close this activity
+            finish();
+            //and open homepage activity
+            startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
+        }*/
 
         etDocName = (EditText) findViewById(R.id.tvDcoName);
         etDocEmail = (EditText) findViewById(R.id.tvDocEmail);
@@ -59,11 +66,11 @@ public class AlertListDetailsActivity extends AppCompatActivity implements View.
         etFamilyEmail = (EditText) findViewById(R.id.tvFamilyEmail);
         etFamilyPhone = (EditText) findViewById(R.id.tvFamilyPhone);
 
-        /*dbDocRef = dbReference.child("AlertDoctorContact");
+        dbDocRef = dbReference.child("AlertDoctorContact");
         dbCareRef = dbReference.child("AlertCareGiverContact");
-        dbCareRef = dbReference.child("AlertFamilyContact");*/
+        dbCareRef = dbReference.child("AlertFamilyContact");
 
-        AlertContact doc = new AlertContact("David","Doctor","david@gmail.com","+1 111 222 3344");
+        /*AlertContact doc = new AlertContact("David","Doctor","david@gmail.com","+1 111 222 3344");
         AlertContact care = new AlertContact("Alice","CareGiver","alice@gmail.com","+1 222 333 4455");
         AlertContact family = new AlertContact("Rob","Family","rob@gmail.com","+1 333 444 5566");
 
@@ -78,8 +85,8 @@ public class AlertListDetailsActivity extends AppCompatActivity implements View.
         etFamilyName.setText(family.name);
         etFamilyEmail.setText(family.email);
         etFamilyPhone.setText(family.phone);
-
-        /*dbDocRef.addValueEventListener(new ValueEventListener() {
+*/
+        dbDocRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 AlertContact doc = (AlertContact) dataSnapshot.getValue();
@@ -131,7 +138,7 @@ public class AlertListDetailsActivity extends AppCompatActivity implements View.
             public void onCancelled(DatabaseError databaseError) {
                 Log.w(TAG, "loadContactDetails:onCancelled", databaseError.toException());
             }
-        });*/
+        });
 
         mModifyAlertSaveButton = (Button) findViewById(R.id.btnModifyAlertList);
         mModifyAlertSaveButton.setOnClickListener(this);
