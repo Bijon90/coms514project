@@ -42,6 +42,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static android.Manifest.permission.READ_CONTACTS;
+/**
+ * Created by Preeti.
+ */
 
 /**
  * A login screen that offers login via email/password.
@@ -71,6 +74,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
 
+    //Fire base reference
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -95,12 +99,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
 
         Button mRegisterButton = (Button) findViewById(R.id.btnRegister);
-        /*mEmailSignInButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                attemptLogin();
-            }
-        });*/
         mRegisterButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -113,28 +111,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mProgressView = findViewById(R.id.login_progress);
     }
 
+    //Attempts a login if user is registered
     public void btnSignIn_Click(View v){
-        /*final ProgressDialog progressDialog = ProgressDialog.show(LoginActivity.this, "Please wait...", "Processing...", true);
-        firebaseAuth.signInWithEmailAndPassword(mEmailView.getText().toString(), mPasswordView.getText().toString())
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        progressDialog.dismiss();
-                        if(task.isSuccessful()){
-                            Toast.makeText(LoginActivity.this,"Login Successful",Toast.LENGTH_LONG).show();
-                            Intent i = new Intent(LoginActivity.this, HomePageActivity.class);
-                            i.putExtra("UserName: ", firebaseAuth.getCurrentUser().getEmail());
-                            startActivity(i);
-                        }
-                        else{
-                            Log.e("Error!", task.getException().toString());
-                            Toast.makeText(LoginActivity.this, task.getException().getMessage(),Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });*/
-        attemptLogin();
+         attemptLogin();
     }
 
+    //Auto completes field on LogIn UI
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
             return;
@@ -228,17 +210,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(true);
             //mAuthTask = new UserLoginTask(email, password);
             //mAuthTask.execute((Void) null);
+
+            //Attempts login user firebase sign in function
             firebaseAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            //progressDialog.dismiss();
                             //if the task is successfull
                             if(task.isSuccessful()){
-                                //start the profile activity
+                                //start the home page activity
                                 finish();
                                 startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
                             }
+                            //If login is unsuccessful redirect to LogIn screen again
                             else{
                                 finish();
                                 startActivity(new Intent(getApplicationContext(), LoginActivity.class));
@@ -248,11 +232,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
+    /**
+     * Checks for a valid email
+     * @param email
+     * @return
+     */
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
         return (email.contains("@") && email.contains("."));
     }
 
+    /**
+     * Checks for password validation
+     * @param password
+     * @return
+     */
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
         return password.length() > 4;

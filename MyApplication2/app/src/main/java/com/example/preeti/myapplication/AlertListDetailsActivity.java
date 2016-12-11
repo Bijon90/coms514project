@@ -19,9 +19,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import static android.text.TextUtils.isEmpty;
+/**
+ * Created by Bijon.
+ */
 
+/**
+ * Activity class to display and modify the Alert List on home page menu
+ */
 public class AlertListDetailsActivity extends AppCompatActivity implements View.OnClickListener {
 
+    //EditText variables that refer to the editable text fields on Alert List UI on Home Page menu
     private EditText etDocName;
     private EditText etDocEmail;
     private EditText etDocPhone;
@@ -32,9 +39,11 @@ public class AlertListDetailsActivity extends AppCompatActivity implements View.
     private EditText etFamilyEmail;
     private EditText etFamilyPhone;
 
+    //Button references
     private Button mModifyAlertSaveButton;
     private Button mBackHomepageButton;
 
+    //FireBase references
     private FirebaseAuth firebaseAuth;
     private DatabaseReference dbReference, dbDocRef,dbCareRef, dbFamilyRef;
 
@@ -46,16 +55,11 @@ public class AlertListDetailsActivity extends AppCompatActivity implements View.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alert_list_details);
 
+        //Creating the firebase reference
         firebaseAuth = FirebaseAuth.getInstance();
         dbReference = FirebaseDatabase.getInstance().getReference().child(firebaseAuth.getCurrentUser().getUid());
-        /*//if getCurrentUser does not returns null
-        if(firebaseAuth.getCurrentUser() != null){
-            //that means user is already logged in, so close this activity
-            finish();
-            //and open homepage activity
-            startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
-        }*/
 
+        //Binding edittext references to the fields on UI
         etDocName = (EditText) findViewById(R.id.tvDcoName);
         etDocEmail = (EditText) findViewById(R.id.tvDocEmail);
         etDocPhone = (EditText) findViewById(R.id.tvDocPhone);
@@ -66,26 +70,12 @@ public class AlertListDetailsActivity extends AppCompatActivity implements View.
         etFamilyEmail = (EditText) findViewById(R.id.tvFamilyEmail);
         etFamilyPhone = (EditText) findViewById(R.id.tvFamilyPhone);
 
+        //Binding firebase references to the Alert Contact objects for logged in user
         dbDocRef = dbReference.child("AlertDoctorContact");
         dbCareRef = dbReference.child("AlertCareGiverContact");
         dbCareRef = dbReference.child("AlertFamilyContact");
 
-        /*AlertContact doc = new AlertContact("David","Doctor","david@gmail.com","+1 111 222 3344");
-        AlertContact care = new AlertContact("Alice","CareGiver","alice@gmail.com","+1 222 333 4455");
-        AlertContact family = new AlertContact("Rob","Family","rob@gmail.com","+1 333 444 5566");
-
-        etDocName.setText(doc.name);
-        etDocEmail.setText(doc.email);
-        etDocPhone.setText(doc.phone);
-
-        etCareName.setText(care.name);
-        etCareEmail.setText(care.email);
-        etCarePhone.setText(care.phone);
-
-        etFamilyName.setText(family.name);
-        etFamilyEmail.setText(family.email);
-        etFamilyPhone.setText(family.phone);
-*/
+        //Setting values from firebase JSON objects to the UI Screen
         dbDocRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -149,6 +139,9 @@ public class AlertListDetailsActivity extends AppCompatActivity implements View.
         progressDialog = new ProgressDialog(this);
     }
 
+    /**
+     * Modifies existing alert contact objects
+     */
     private void modifyAlertList() {
         String docName = etDocName.getText().toString().trim();
         String docEmail = etDocEmail.getText().toString().trim();
@@ -162,10 +155,12 @@ public class AlertListDetailsActivity extends AppCompatActivity implements View.
         String familyEmail = etFamilyEmail.getText().toString().trim();
         String familyPhone = etFamilyPhone.getText().toString().trim();
 
+        //Checks if at least one alert contact details are not empty
         if(!isAlertListEmpty(docName,docEmail,docPhone,careName,careEmail,carePhone,familyName,familyEmail,familyPhone)){
             Toast.makeText(this, "Please submit at least one alert contact", Toast.LENGTH_LONG).show();
             return;
         }
+        //Otherwise saves modified details back to firebase
         else{
             progressDialog.setMessage("Submitting Information. Please Wait...");
             progressDialog.show();
@@ -182,6 +177,19 @@ public class AlertListDetailsActivity extends AppCompatActivity implements View.
         }
     }
 
+    /**
+     * Checks if at least one of the ALert Contact is not empty
+     * @param dName
+     * @param dEmail
+     * @param dPhone
+     * @param cName
+     * @param cEmail
+     * @param cPhone
+     * @param fName
+     * @param fEmail
+     * @param fPhone
+     * @return
+     */
     private boolean isAlertListEmpty(String dName, String dEmail, String dPhone,
                                   String cName, String cEmail, String cPhone,
                                   String fName, String fEmail, String fPhone){

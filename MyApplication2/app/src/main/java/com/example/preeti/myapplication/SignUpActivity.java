@@ -10,27 +10,32 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
 
+/**
+ * Created by Bijon.
+ */
+
+/**
+ * Activity class for Sign Up
+ */
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener{
 
+    //EditText variables that refer to the editable text fields on Sign Up UI
     private EditText etEmail;
     private EditText etPassword;
     private EditText etCPassword;
 
+    //Button for sign up
     private Button mSignUpButton;
 
+    //Firebase reference
     private FirebaseAuth firebaseAuth;
-    //private DatabaseReference dbReference;
 
     private ProgressDialog progressDialog;
 
@@ -41,14 +46,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        //if getCurrentUser does not returns null
-        /*if(firebaseAuth.getCurrentUser() != null){
-            //that means user is already logged in, so close this activity
-            finish();
-            //and open homepage activity
-            startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
-        }*/
-
+        //Binding variables to textfields on the UI
         etEmail = (EditText) findViewById(R.id.etEmail);
         etPassword = (EditText) findViewById(R.id.etPassword);
         etCPassword = (EditText) findViewById(R.id.etCPassword);
@@ -58,6 +56,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
         progressDialog = new ProgressDialog(this);
     }
+
+    //Registers user with the provided emaila nd password
     private void registerUser(){
         final String email = etEmail.getText().toString().trim();
         final String password  = etPassword.getText().toString().trim();
@@ -74,6 +74,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             }
             progressDialog.setMessage("Registering Please Wait...");
             progressDialog.show();
+
+            //Attemps to register user and automatically checks if user is already registered or not
             firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -99,6 +101,12 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    /**
+     * Checks if both the password fields are matching or not
+     * @param password
+     * @param cPassword
+     * @return
+     */
     private boolean isPasswordMatch(String password, String cPassword){
         if(!password.equals(cPassword)){
             Toast.makeText(this, "Password does not match...", Toast.LENGTH_LONG).show();
@@ -113,11 +121,5 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         if(view == mSignUpButton){
             registerUser();
         }
-
-        /*if(view == mSetAlertListButton){
-            //open login activity when user taps on the already registered textview
-            startActivity(new Intent(this, AlertListActivity.class));
-        }*/
-
     }
 }

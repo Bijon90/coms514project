@@ -17,7 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,17 +28,23 @@ import com.jjoe64.graphview.Viewport;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Created by Bijon & Vijay
+ */
+
+/**
+ * Activity class for HomePage Activities
+ */
 public class HomePageActivity extends AppCompatActivity {
     private static final int MY_PERMISSIONS_REQUEST_SEND_SMS = 0;
     String phoneNo="5179402778";
     String message = "Heart rate of your friend is critical";
     String senderAddress[]=new String[1];
 
+    //References for graph of heart rates on homepage
     private LineGraphSeries<DataPoint> series;
     private static final Random RANDOM=new Random();
     private int lastX=0;
@@ -47,9 +52,11 @@ public class HomePageActivity extends AppCompatActivity {
     private double averageHR = 0, maxHR = Integer.MIN_VALUE, minHR = Integer.MAX_VALUE, total = 0.0;
     private ArrayList<Integer> heartRates;
 
+    //Firebase references
     private FirebaseAuth firebaseAuth;
     private DatabaseReference dbRef, docRef, careRef, familyRef, userRef;
 
+    //Variables for details
     private String docName, docEmail, docPhone;
     private String careName, careEmail, carePhone;
     private String familyName, familyEmail, familyPhone;
@@ -59,6 +66,7 @@ public class HomePageActivity extends AppCompatActivity {
 
     public static final String TAG = "AlertContact";
 
+    //Handler to poll data every 1000 milliseconds
     private Handler mHandler;
     Runnable myTask = new Runnable() {
         @Override
@@ -74,6 +82,7 @@ public class HomePageActivity extends AppCompatActivity {
         mHandler.postDelayed(myTask, 1000);
     }
 
+    //On finishing the activity it saves currently calculated average pulse rate back to the database
     @Override
     public void onStop() {
         super.onStop();
@@ -122,6 +131,7 @@ public class HomePageActivity extends AppCompatActivity {
         careRef = dbRef.child("AlertCareGiverContact");
         familyRef = dbRef.child("AlertFamilyContact");
 
+        //Setting up the graph on homepage
         GraphView graph=(GraphView) findViewById(R.id.graph);
         series = new LineGraphSeries<DataPoint>();
         graph.addSeries(series);
@@ -132,6 +142,7 @@ public class HomePageActivity extends AppCompatActivity {
         viewport.scrollToEnd();
         viewport.setScrollable(true);
 
+        //Fetching all alert contact and user details from firebase
         docRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -186,9 +197,15 @@ public class HomePageActivity extends AppCompatActivity {
                 Log.w("UserDetails", "loadUserDetails:onCancelled", databaseError.toException());
             }
         });
+
+        //Calculates the maximum heart rate value for the user from age
         maxHRate = 220 - Integer.parseInt(ageS);
     }
 
+    /**
+     * Sets maximum, minimum and average heart rate vlues on home page after polling the data
+     * and appends the data point on the graph
+     */
     private void setHeartbeat() {
                 int value = generateData();
                 series.appendData(new DataPoint(lastX++,(double)value),true,100);
@@ -208,12 +225,22 @@ public class HomePageActivity extends AppCompatActivity {
                 trackHeartRate(value);
     }
 
+    /**
+     * Handles the menu on home page
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
+    /**
+     * Defines screen redirection and actions to be taken on selecting a menu item
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -238,6 +265,10 @@ public class HomePageActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Analyses pulse rate in a two-way check and send automated report if found irregularity
+     * @param val
+     */
     private void trackHeartRate(int val){
         if(isabNormal(val) || isCritical(val)) {
             Toast.makeText(this, "HeartRate Critical! Please Send a report!", Toast.LENGTH_LONG).show();
@@ -245,6 +276,12 @@ public class HomePageActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Compares pulse rate within a specific range
+     * with respect to average value stored in database for the user
+     * @param val
+     * @return
+     */
     private boolean isabNormal(int val){
         int avg = Integer.parseInt(hRateS);
         int low = (int) (avg - avg*0.25);
@@ -252,12 +289,21 @@ public class HomePageActivity extends AppCompatActivity {
         return val < low || val >upper;
     }
 
+    /**
+     * Checks for critical heart rate that is way beyond range
+     * with respect to maximum heart rate value for the user
+     * @param val
+     * @return
+     */
     private boolean isCritical(int val){
         int lowLimit = (int)(maxHRate*0.5);
         int upperLimit = (int)(maxHRate*0.85);
         return val<lowLimit || val>upperLimit;
     }
 
+    /**
+     * Send automated alert to all the contacts in alert list saved in database
+     */
     private void alertContacts() {
         senderAddress[0]=docEmail;
         sendEmail(senderAddress);
@@ -275,6 +321,7 @@ public class HomePageActivity extends AppCompatActivity {
         sendSMSMessage();
     }
 
+    //Mock Heart rate generator to test the app
     private int generateData(){
         int lowerBound = 65;
         int upperBound = 100;
@@ -282,6 +329,10 @@ public class HomePageActivity extends AppCompatActivity {
         return val;
     }
 
+    /**
+     * Sends email to the specified email address
+     * @param sendToAddress
+     */
     protected void sendEmail(String[] sendToAddress) {
         try {
             Intent emailIntent = new Intent(Intent.ACTION_SEND, Uri.fromParts("preetibh@iastate.edu", "", null));
@@ -296,6 +347,9 @@ public class HomePageActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Sends SMS to the specified phone number
+     */
     protected void sendSMSMessage() {
 
         if (ContextCompat.checkSelfPermission(this,
@@ -311,6 +365,12 @@ public class HomePageActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Handles permissions required to send email and sms
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {

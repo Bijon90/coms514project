@@ -27,7 +27,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 /**
- * Created by Bijon on 11/30/2016.
+ * Created by Bijon & Preeti.
+ */
+
+/**
+ * Activity class to send on-demand report on homepage menu
  */
 public class PopUpReportActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -39,11 +43,14 @@ public class PopUpReportActivity extends AppCompatActivity implements View.OnCli
     private CheckBox doc, family, care;
     private Button mButtonSendReport;
 
+    //Creating alert contact reference to fetch data from Firebase
     private AlertContact docAlert, careAlert, familyAlert;
 
+    //Firebase references
     private FirebaseAuth firebaseAuth;
     private DatabaseReference dbRef, docRef, careRef, familyRef;
 
+    //Variable to refer alert contact details
     private String docName, docEmail, docPhone;
     private String careName, careEmail, carePhone;
     private String familyName, familyEmail, familyPhone;
@@ -56,10 +63,12 @@ public class PopUpReportActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.activity_popupreport);
         firebaseAuth = FirebaseAuth.getInstance();
         dbRef = FirebaseDatabase.getInstance().getReference().child(firebaseAuth.getCurrentUser().getUid());
+        //Initializing the references
         docRef = dbRef.child("AlertDoctorContact");
         careRef = dbRef.child("AlertCareGiverContact");
         familyRef = dbRef.child("AlertFamilyContact");
 
+        //Fetching Docotr contact details from Firebase
         docRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -74,6 +83,7 @@ public class PopUpReportActivity extends AppCompatActivity implements View.OnCli
             }
         });
 
+        //Fetching Care Giver contact details from Firebase
         careRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -88,6 +98,7 @@ public class PopUpReportActivity extends AppCompatActivity implements View.OnCli
             }
         });
 
+        //Fetching Family Member contact details from Firebase
         familyRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -102,15 +113,14 @@ public class PopUpReportActivity extends AppCompatActivity implements View.OnCli
             }
         });
 
-
+        //Setting up the dimensions for pop up window
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
-
         int width = dm.widthPixels;
         int height = dm.heightPixels;
-
         getWindow().setLayout((int)(width*0.8),(int)(height*0.7));
 
+        //Fetching which contacts the user wants to send the report to
         doc = (CheckBox)findViewById(R.id.checkBoxDoctor);
         care =(CheckBox)findViewById(R.id.checkBoxCareGiver);
         family = (CheckBox)findViewById(R.id.checkBoxFamily);
@@ -118,30 +128,29 @@ public class PopUpReportActivity extends AppCompatActivity implements View.OnCli
         mButtonSendReport = (Button) findViewById(R.id.btnSendReport);
         mButtonSendReport.setOnClickListener(this);
     }
+
+    //Sends a report on demand to the selected ocntacts
     private void sendReport(){
         if(doc.isChecked()){
             Toast.makeText(this, "Report sent to Doctor!", Toast.LENGTH_LONG).show();
-            //senderAddress[0]="bhardwaj.preeti1992@gmail.com";
             senderAddress[0]=docEmail;
-            sendEmail(senderAddress);
+            sendEmail(senderAddress);       //Sends Email
             phoneNo = docPhone;
-            sendSMSMessage();
+            sendSMSMessage();               //Sends SMS
         }
         if(care.isChecked()){
             Toast.makeText(this, "Report sent to CareGiver!", Toast.LENGTH_LONG).show();
-            //senderAddress[0]="bkbose@iastate.edu";
             senderAddress[0]=careEmail;
-            sendEmail(senderAddress);
+            sendEmail(senderAddress);       //Sends Email
             phoneNo = carePhone;
-            sendSMSMessage();
+            sendSMSMessage();               //Sends SMS
         }
         if(family.isChecked()){
             Toast.makeText(this, "Report sent to Family!", Toast.LENGTH_LONG).show();
-            //senderAddress[0]="bijonkumarbose90@gmail.com";
             senderAddress[0]=familyEmail;
-            sendEmail(senderAddress);
+            sendEmail(senderAddress);       //Sends Email
             phoneNo = familyPhone;
-            sendSMSMessage();
+            sendSMSMessage();               //Sends SMS
         }
     }
 
@@ -153,6 +162,11 @@ public class PopUpReportActivity extends AppCompatActivity implements View.OnCli
             startActivity(new Intent(this,HomePageActivity.class));
         }
     }
+
+    /**
+     * Takes an email address and send email
+     * @param sendToAddress
+     */
     protected void sendEmail(String[] sendToAddress) {
         try {
             Intent emailIntent = new Intent(Intent.ACTION_SEND, Uri.fromParts("preetibh@iastate.edu", "", null));
@@ -167,6 +181,9 @@ public class PopUpReportActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
+    /**
+     * Sends SMS to the specified number
+     */
     protected void sendSMSMessage() {
 
         if (ContextCompat.checkSelfPermission(this,
@@ -182,6 +199,12 @@ public class PopUpReportActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
+    /**
+     * Manages required permissions to send email and sms
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
         switch (requestCode) {

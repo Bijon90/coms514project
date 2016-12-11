@@ -1,5 +1,7 @@
 package com.example.preeti.myapplication;
 
+
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,9 +20,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * Created by Bijon.
+ */
+
+/**
+ * Activity class to display User Details in Profile Details screen on homepage menu
+ */
 public class UserProfileActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG = "User Profile Details";
 
+    //EditText variables that refer to the editable text fields on profile Details UI
     private EditText tvFname;
     private EditText tvLname;
     private EditText tvAddress;
@@ -31,17 +41,22 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
     private EditText tvHeartRate;
     private EditText tvMHistory;
 
+    //Button variables that refer to the buttons on Profile Details UI
     private Button mBackToHome;
     private Button mModify;
 
+    //Firebase references that connect with Firebase for Profile Details activities
+    // and saving modified user details data back to Firebase.
     private FirebaseAuth firebaseAuth;
     private DatabaseReference userdbRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
         firebaseAuth = FirebaseAuth.getInstance();
 
+        //Pulling all the values from the UI
         tvFname = (EditText) findViewById(R.id.tvfName);
         tvLname = (EditText) findViewById(R.id.tvlName);
         tvAddress = (EditText) findViewById(R.id.tvAddress);
@@ -52,30 +67,14 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         tvHeartRate = (EditText) findViewById(R.id.tvHeartRate);
         tvMHistory = (EditText) findViewById(R.id.tvMHistory);
 
-        /*UserDetails udetails = new UserDetails("Bijon","Bose","Ames","Male","26","162","174","85","None");
-        String fname = udetails.fName;
-        String lname = udetails.lName;
-        String address = udetails.address;
-        String age = udetails.age;
-        String sex = udetails.sex;
-        String weight = udetails.weight;
-        String height = udetails.height;
-        String hrate = udetails.hRate;
-        String mHistory = udetails.mHistory;
-
-        tvFname.setText(fname);
-        tvLname.setText(lname);
-        tvAddress.setText(address);
-        tvAge.setText(age);
-        tvSex.setText(sex);
-        tvWeight.setText(weight);
-        tvHeight.setText(height);
-        tvHeartRate.setText(hrate);
-        tvMHistory.setText(mHistory);*/
+        //Fetching currently logged in user from Firebase
         FirebaseUser currUser = firebaseAuth.getCurrentUser();
+        //Fetching current logged in user ID
         final String uid = currUser.getUid();
+
+        //Creating a reference to the Database snapshot of currently logged in user in Firebase
         userdbRef = FirebaseDatabase.getInstance().getReference().child(uid).child("UserDetails");
-        //tvFname.setText(uid);*/
+        //Saving values back to Firebase on modification.
         userdbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -112,12 +111,12 @@ public class UserProfileActivity extends AppCompatActivity implements View.OnCli
         mModify.setOnClickListener(this);
     }
 
+    //Saves modified user details values and overwrite the Json object in Firebase for the same user id
     private void saveUserDetails(){
         String fName = tvFname.getText().toString().trim();
         String lName = tvLname.getText().toString().trim();
         String address = tvAddress.getText().toString().trim();
         String sex = tvSex.getText().toString().trim();
-        //String sex = "Male";
         String age = tvAge.getText().toString().trim();
         String weight = tvWeight.getText().toString().trim();
         String height = tvHeight.getText().toString().trim();

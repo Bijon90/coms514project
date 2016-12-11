@@ -8,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
  * Created by Preeti on 10/31/16.
  */
 
+/**
+ * Defines the welcome screen for the app
+ */
 public class Splash extends AppCompatActivity {
 
     @Override

@@ -19,8 +19,16 @@ import java.util.Set;
 
 import static android.text.TextUtils.*;
 
+/**
+ * Created by Bijon.
+ */
+
+/**
+ * Activity class to set up the Alert List during registration
+ */
 public class AlertListActivity extends AppCompatActivity implements View.OnClickListener {
 
+    //EditText variables that refer to the editable text fields on Alert List UI
     private EditText etDocName;
     private EditText etDocEmail;
     private EditText etDocPhone;
@@ -31,10 +39,13 @@ public class AlertListActivity extends AppCompatActivity implements View.OnClick
     private EditText etFamilyEmail;
     private EditText etFamilyPhone;
 
+    //Firebase references that connect with Firebase for registration activities
+    // and saving user details and alert list details data.
     private FirebaseAuth firebaseAuth;
     private DatabaseReference dbReference;
     private Firebase fbRootRef;
 
+    //Button variables that refer to the buttons on Alert List UI
     private Button mAlertSaveButton;
     private Button mBackButton;
 
@@ -57,6 +68,7 @@ public class AlertListActivity extends AppCompatActivity implements View.OnClick
             startActivity(new Intent(AlertListActivity.this, LoginActivity.class));
         }
 
+        //Pulling all the values from the UI
         etDocName = (EditText) findViewById(R.id.etDcoName);
         etDocEmail = (EditText) findViewById(R.id.etDocEmail);
         etDocPhone = (EditText) findViewById(R.id.etDocPhone);
@@ -70,12 +82,16 @@ public class AlertListActivity extends AppCompatActivity implements View.OnClick
         mAlertSaveButton = (Button) findViewById(R.id.btnSaveAlertList);
         mBackButton = (Button) findViewById(R.id.btnBackRegister);
 
+        //Setting on Click methods for buttons
         mAlertSaveButton.setOnClickListener(this);
         mBackButton.setOnClickListener(this);
 
         progressDialog = new ProgressDialog(this);
     }
 
+    /**
+     * Stores the data from the registration page to Firebase
+     */
     private void saveAlertList() {
         String docName = etDocName.getText().toString().trim();
         String docEmail = etDocEmail.getText().toString().trim();
@@ -92,29 +108,28 @@ public class AlertListActivity extends AppCompatActivity implements View.OnClick
         String familyPhone = etFamilyPhone.getText().toString().trim();
         String familyRelation = "Family";
 
+        //If all of the alert contact details are left blank, a toast is shown to make user aware
+        // that at least one alert contact should be registered
         if(isAlertListEmpty(docName,docEmail,docPhone,careName,careEmail,carePhone,familyName,familyEmail,familyPhone)){
             Toast.makeText(this, "Please submit at least one alert contact", Toast.LENGTH_LONG).show();
             return;
         }
         else{
-            /*progressDialog.setMessage("Submitting Information. Please Wait...");
-            progressDialog.show();*/
-
+            //Three alert contact instances are created to save the alert list to Firebase
             AlertContact docDetails = new AlertContact(docName,docRelation,docEmail,docPhone);
             AlertContact caregiverDetails = new AlertContact(careName,"CareGiver",careEmail,carePhone);
             AlertContact familyDetails = new AlertContact(familyName,"Family",familyEmail,familyPhone);
 
-            //AlertList alertList = new AlertList(docDetails,caregiverDetails,familyDetails);
-
+            //Fetching current logged in user from Firebase
             FirebaseUser currUser = firebaseAuth.getCurrentUser();
+            //If logged in user is null, application takes the user to log in page
             if(currUser == null){
-                //finish();
+                finish();
                 //and open homepage activity
                 startActivity(new Intent(AlertListActivity.this, LoginActivity.class));
             }
             else{
-                /*Firebase fbAlertRef = fbRootRef.child(currUser.getUid()).child("DocContact");
-                fbAlertRef.setValue(docDetails);*/
+                //Saves the Alert Contact instances to Firebase
                 dbReference.child(currUser.getUid()).child("AlertDoctorContact").setValue(docDetails);
                 dbReference.child(currUser.getUid()).child("AlertCareGiverContact").setValue(caregiverDetails);
                 dbReference.child(currUser.getUid()).child("AlertFamilyContact").setValue(familyDetails);
@@ -123,6 +138,19 @@ public class AlertListActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
+    /**
+     * Checks if at least one of the ALert Contact is not empty
+     * @param dName
+     * @param dEmail
+     * @param dPhone
+     * @param cName
+     * @param cEmail
+     * @param cPhone
+     * @param fName
+     * @param fEmail
+     * @param fPhone
+     * @return
+     */
     private boolean isAlertListEmpty(String dName, String dEmail, String dPhone,
                                   String cName, String cEmail, String cPhone,
                                   String fName, String fEmail, String fPhone){
@@ -145,6 +173,10 @@ public class AlertListActivity extends AppCompatActivity implements View.OnClick
         return (d||c||f);
     }
 
+    /**
+     * Triggers the on click function on Save and Back button
+     * @param view
+     */
     @Override
     public void onClick(View view) {
         if(view == mAlertSaveButton){

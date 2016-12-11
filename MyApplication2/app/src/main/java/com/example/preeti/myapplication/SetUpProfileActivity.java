@@ -2,7 +2,6 @@ package com.example.preeti.myapplication;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,8 +16,16 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+/**
+ * Created by Bijon.
+ */
+
+/**
+ * Activity class to save User Details in register screen
+ */
 public class SetUpProfileActivity extends AppCompatActivity implements View.OnClickListener{
 
+    //EditText variables that refer to the editable text fields on Register UI
     private EditText etFname;
     private EditText etLname;
     private EditText etAddress;
@@ -30,9 +37,11 @@ public class SetUpProfileActivity extends AppCompatActivity implements View.OnCl
     private EditText etHeartRate;
     private EditText etMHistory;
 
+    //Button references
     private Button mSaveDetailsButton;
     private Button mSetAlertListButton;
 
+    //Firebase references
     private FirebaseAuth firebaseAuth;
     private DatabaseReference dbReference;
 
@@ -44,17 +53,10 @@ public class SetUpProfileActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_register);
 
         firebaseAuth = FirebaseAuth.getInstance();
-
-        //if getCurrentUser does not returns null
-        /*if(firebaseAuth.getCurrentUser() != null){
-            //that means user is already logged in, so close this activity
-            finish();
-            //and open homepage activity
-            startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
-        }*/
         FirebaseUser currUser = firebaseAuth.getCurrentUser();
         dbReference = FirebaseDatabase.getInstance().getReference();
 
+        //Binding edittext references to the editable text fields on UI
         etFname = (EditText) findViewById(R.id.etFname);
         etLname = (EditText) findViewById(R.id.etLname);
         etAddress = (EditText) findViewById(R.id.etAddress);
@@ -73,23 +75,29 @@ public class SetUpProfileActivity extends AppCompatActivity implements View.OnCl
 
         progressDialog = new ProgressDialog(this);
     }
+
+    //Saves user details to Firebase
     private void saveUserDetails(){
+
+            //Pulling all values from UI fields
             String fName = etFname.getText().toString().trim();
             String lName = etLname.getText().toString().trim();
             String address = etAddress.getText().toString().trim();
             String sex = String.valueOf(etSelectedSex.getText().toString().trim());
-            //String sex = "Male";
             String age = etAge.getText().toString().trim();
             String weight = etWeight.getText().toString().trim();
             String height = etHeight.getText().toString().trim();
             String hRate = etHeartRate.getText().toString().trim();
             String mHistory = etMHistory.getText().toString().trim();
 
+            //Creates and UserDetails instance to save in Firebase as a JSON object
             UserDetails userDetails = new UserDetails(fName, lName, address, sex, age,weight, height, hRate, mHistory);
 
+            //Fetching currently logged in user
             FirebaseUser currUser = firebaseAuth.getCurrentUser();
             dbReference.child(currUser.getUid()).child("UserDetails").setValue(userDetails);
 
+            //Redirects user to Login screen after registration
             Toast.makeText(this, "Information saved...", Toast.LENGTH_LONG).show();
             startActivity(new Intent(SetUpProfileActivity.this, LoginActivity.class));
     }
