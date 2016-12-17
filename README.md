@@ -47,9 +47,9 @@ JVM: OpenJDK 64-Bit Server VM
     a. Copy the apk file from /MyApplication2/app/build/outputs/apk/
     b. Save it in your android device.
     c. Install the application and run it.
-
+[/embed]
 ## **Database Set-Up Instructions:**
-
+[embed]https://drive.google.com/a/iastate.edu/file/d/0B0ufBQPEDYPDSHRlbnVUYmNheUk/view?usp=sharing[/embed]
 ## **How to use the application:**
 ### **Welcome to PulseTracker:**
 On opening the app, the following screen is shown:
@@ -90,10 +90,10 @@ On opening the app, the following screen is shown:
 ####![Home Page](https://s29.postimg.org/9sg61tvyv/Home_Page.jpg)    
 
 2. The homepage displays four information:
-2. a. Continuously monitored pulse rate
-2. b. Maximum Pulse rate tracked in current session
-2. c. Minimum Pulse rate tracked in current session
-2. d. A graph presenting pulse rates monitored during current session
+    a. Continuously monitored pulse rate
+    b. Maximum Pulse rate tracked in current session
+    c. Minimum Pulse rate tracked in current session
+    d. A graph presenting pulse rates monitored during current session
 
 ### **Homepage Menu:**
 1. The homepage also has a menu section of the application:
