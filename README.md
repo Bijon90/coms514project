@@ -76,10 +76,14 @@ On opening the app, the following screen is shown:
 
 ### **Sign In:**
 1.  After the user has already registered, they can login to the application by providing the registered email address and password combination and clicking &#39;Sign In&#39; button.
+
     ![Sign In](https://s29.postimg.org/wq7j52fiv/Sign_In.jpg)
+    
 ### **Homepage:**
 1. After logging in to the app, it will redirect to the Home Page.
+
     ![Home Page](https://s29.postimg.org/9sg61tvyv/Home_Page.jpg)
+    
 2. The homepage displays four information:
     a. Continuously monitored pulse rate
     b. Maximum Pulse rate tracked in current session
@@ -87,17 +91,25 @@ On opening the app, the following screen is shown:
     d. A graph presenting pulse rates monitored during current session
 ### **Homepage Menu:**
 1. The homepage also has a menu section of the application:
+
     ![Home Page Menu](https://s29.postimg.org/zcig89hcn/Home_Page_Menu.jpg)
+    
     a. **User Profile details:** in which user can view/update his/her profile anytime.
+    
     ![User Profile Details](https://s29.postimg.org/ke4mrkro7/User_Details.jpg)
+    
     **Modify** : The modify button enables the user to save all the modified user details.
     **Back To Home Page** : This back button redirects the user back to home page.
     b. **Alert list:** This menu option displays the alert list of the user and provides the option to modify it.
+    
     ![Alert List Details](https://s29.postimg.org/tyjo0prmf/Alert_List_Details.jpg)
+    
     **Modify** : The modify button enables the user to save all the modified alert list.
     **Back** : This back button redirects the user back to home page.
     c. **Send Report:** This option enables the user to send reports on demand and select contacts from alert list to which the report should be sent to. This will send an email and SMS to the people in alert list.
+    
     ![Send Report](https://s29.postimg.org/wz53uzsbb/Send_Report.jpg)
+    
     d. **Log Out:** Enables user to logout form the application.
 
 ### **Contact Us:**
