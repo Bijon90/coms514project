@@ -82,7 +82,7 @@ On opening the app, the following screen is shown:
 ![Save User Details](https://s29.postimg.org/ow6xjo7pz/Set_Profile_Details.jpg)
 
 ####10. Click &#39;Save&#39;.
-####11. This completes the registration process and on successful completion the app redirects the user to the initial Login pa####ge.
+####11. This completes the registration process and on successful completion the app redirects the user to the initial Login page.
 
 ### **Sign In:**
 ####1.  After the user has already registered, they can login to the application by providing the registered email address and password combination and clicking &#39;Sign In&#39; button.
@@ -108,14 +108,18 @@ On opening the app, the following screen is shown:
     
 ![User Profile Details](https://s29.postimg.org/ke4mrkro7/User_Details.jpg)
     
-**Modify** : The modify button enables the user to save all the modified user details.
-**Back To Home Page** : This back button redirects the user back to home page.
+######**Modify** : The modify button enables the user to save all the modified user details.
+
+######**Back To Home Page** : This back button redirects the user back to home page.
+
 #####b. **Alert list:** This menu option displays the alert list of the user and provides the option to modify it.
     
 ![Alert List Details](https://s29.postimg.org/tyjo0prmf/Alert_List_Details.jpg)
     
-**Modify** : The modify button enables the user to save all the modified alert list.
-**Back** : This back button redirects the user back to home page.
+######**Modify** : The modify button enables the user to save all the modified alert list.
+
+######**Back** : This back button redirects the user back to home page.
+
 #####c. **Send Report:** This option enables the user to send reports on demand and select contacts from alert list to which the report should be sent to. This will send an email and SMS to the people in alert list.
     
 ![Send Report](https://s29.postimg.org/wz53uzsbb/Send_Report.jpg)
