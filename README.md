@@ -58,42 +58,28 @@ On opening the app, the following screen is shown:
 
 ### **Registration:**
 1. If user is not already registered on the app, the user can click on the &#39;Register&#39; button on login page.
-
-![Register](https://s27.postimg.org/itrmsejzn/Register.jpg)
-
+    ![Register](https://s27.postimg.org/itrmsejzn/Register.jpg)
 2. The application takes the user to the sign-up page.
-
-![SignUp](https://s29.postimg.org/wq7j52fiv/Sign_In.jpg)
-
+    ![SignUp](https://s29.postimg.org/wq7j52fiv/Sign_In.jpg)
 3. The user has to fill email and chosen password to sign up his account on the app.
 4. The next step in the registration process is to fill all the personal details of the user.
-
-![Create Alert List](https://s29.postimg.org/8h8etd0d3/Register_User_Details.jpg)
-
+    ![Create Alert List](https://s29.postimg.org/8h8etd0d3/Register_User_Details.jpg)
 5. Click on &#39;Create Alert List&#39;
 6. For alert list: At least one of the alert contact details should be filled to complete the registration process.
 7. After filling all the details, click on &#39;Submit&#39; to register the alert list for the user.
-
-![Submit Alert List](https://s29.postimg.org/exlyx6yaf/Set_Alert_List.jpg)
-
+    ![Submit Alert List](https://s29.postimg.org/exlyx6yaf/Set_Alert_List.jpg)
 8. Click on &#39;Back&#39;
 9. Fill up the fields - Full Name, Address, Gender, Age, Weight, Height, Heart rate and any medical history of the user.
-
-![Save User Details](https://s29.postimg.org/ow6xjo7pz/Set_Profile_Details.jpg)
-
+    ![Save User Details](https://s29.postimg.org/ow6xjo7pz/Set_Profile_Details.jpg)
 10. Click &#39;Save&#39;.
 11. This completes the registration process and on successful completion the app redirects the user to the initial Login page.
 
 ### **Sign In:**
 1.  After the user has already registered, they can login to the application by providing the registered email address and password combination and clicking &#39;Sign In&#39; button.
-
-![Sign In](https://s29.postimg.org/wq7j52fiv/Sign_In.jpg)
-
+    ![Sign In](https://s29.postimg.org/wq7j52fiv/Sign_In.jpg)
 ### **Homepage:**
 1. After logging in to the app, it will redirect to the Home Page.
-
-![Home Page](https://s29.postimg.org/9sg61tvyv/Home_Page.jpg)
-
+    ![Home Page](https://s29.postimg.org/9sg61tvyv/Home_Page.jpg)
 2. The homepage displays four information:
     a. Continuously monitored pulse rate
     b. Maximum Pulse rate tracked in current session
@@ -101,29 +87,17 @@ On opening the app, the following screen is shown:
     d. A graph presenting pulse rates monitored during current session
 ### **Homepage Menu:**
 1. The homepage also has a menu section of the application:
-
-![Home Page Menu](https://s29.postimg.org/zcig89hcn/Home_Page_Menu.jpg)
-
+    ![Home Page Menu](https://s29.postimg.org/zcig89hcn/Home_Page_Menu.jpg)
     a. **User Profile details:** in which user can view/update his/her profile anytime.
-    
-![User Profile Details](https://s29.postimg.org/ke4mrkro7/User_Details.jpg)
-    
+    ![User Profile Details](https://s29.postimg.org/ke4mrkro7/User_Details.jpg)
     **Modify** : The modify button enables the user to save all the modified user details.
-
     **Back To Home Page** : This back button redirects the user back to home page.
-
     b. **Alert list:** This menu option displays the alert list of the user and provides the option to modify it.
-    
-![Alert List Details](https://s29.postimg.org/tyjo0prmf/Alert_List_Details.jpg)
-    
+    ![Alert List Details](https://s29.postimg.org/tyjo0prmf/Alert_List_Details.jpg)
     **Modify** : The modify button enables the user to save all the modified alert list.
-
     **Back** : This back button redirects the user back to home page.
-
     c. **Send Report:** This option enables the user to send reports on demand and select contacts from alert list to which the report should be sent to. This will send an email and SMS to the people in alert list.
-    
-![Send Report](https://s29.postimg.org/wz53uzsbb/Send_Report.jpg)
-
+    ![Send Report](https://s29.postimg.org/wz53uzsbb/Send_Report.jpg)
     d. **Log Out:** Enables user to logout form the application.
 
 ### **Contact Us:**
