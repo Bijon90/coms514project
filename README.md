@@ -94,28 +94,30 @@ On opening the app, the following screen is shown:
     b. Maximum Pulse rate tracked in current session
     c. Minimum Pulse rate tracked in current session.
     d. A graph presenting pulse rates monitored during current session
+
 ### **Homepage Menu:**
 1. The homepage also has a menu section of the application:
 
-    ![Home Page Menu](https://s29.postimg.org/zcig89hcn/Home_Page_Menu.jpg)
+####![Home Page Menu](https://s29.postimg.org/zcig89hcn/Home_Page_Menu.jpg)
     
-    a. **User Profile details:** in which user can view/update his/her profile anytime.
+1. a.**User Profile details:** in which user can view/update his/her profile anytime.
+
+![User Profile Details](https://s29.postimg.org/ke4mrkro7/User_Details.jpg)
+
+**Modify** : The modify button enables the user to save all the modified user details.
+**Back To Home Page** : This back button redirects the user back to home page.
     
-    ![User Profile Details](https://s29.postimg.org/ke4mrkro7/User_Details.jpg)
-    
-    **Modify** : The modify button enables the user to save all the modified user details.
-    **Back To Home Page** : This back button redirects the user back to home page.
-    b. **Alert list:** This menu option displays the alert list of the user and provides the option to modify it.
-    
-    ![Alert List Details](https://s29.postimg.org/tyjo0prmf/Alert_List_Details.jpg)
-    
-    **Modify** : The modify button enables the user to save all the modified alert list.
-    **Back** : This back button redirects the user back to home page.
-    c. **Send Report:** This option enables the user to send reports on demand and select contacts from alert list to which the report should be sent to. This will send an email and SMS to the people in alert list.
-    
-    ![Send Report](https://s29.postimg.org/wz53uzsbb/Send_Report.jpg)
-    
-    d. **Log Out:** Enables user to logout form the application.
+1. b. **Alert list:** This menu option displays the alert list of the user and provides the option to modify it.
+![Alert List Details](https://s29.postimg.org/tyjo0prmf/Alert_List_Details.jpg)
+
+**Modify** : The modify button enables the user to save all the modified alert list.
+**Back** : This back button redirects the user back to home page.
+
+1. c. **Send Report:** This option enables the user to send reports on demand and select contacts from alert list to which the report should be sent to. This will send an email and SMS to the people in alert list.
+
+![Send Report](https://s29.postimg.org/wz53uzsbb/Send_Report.jpg)
+
+1. d. **Log Out:** Enables user to logout form the application.
 
 ### **Contact Us:**
 1. Bijon Bose - email: bkbose@iastate.edu
