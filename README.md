@@ -58,19 +58,24 @@ On opening the app, the following screen is shown:
 
 ### **Registration:**
 1. If user is not already registered on the app, the user can click on the &#39;Register&#39; button on login page.
-    ![Register](https://s27.postimg.org/itrmsejzn/Register.jpg)
+####![Register](https://s27.postimg.org/itrmsejzn/Register.jpg)
+
 2. The application takes the user to the sign-up page.
-    ![SignUp](https://s29.postimg.org/wq7j52fiv/Sign_In.jpg)
+####![SignUp](https://s29.postimg.org/wq7j52fiv/Sign_In.jpg)
+
 3. The user has to fill email and chosen password to sign up his account on the app.
 4. The next step in the registration process is to fill all the personal details of the user.
-    ![Create Alert List](https://s29.postimg.org/8h8etd0d3/Register_User_Details.jpg)
+####![Create Alert List](https://s29.postimg.org/8h8etd0d3/Register_User_Details.jpg)
+
 5. Click on &#39;Create Alert List&#39;
 6. For alert list: At least one of the alert contact details should be filled to complete the registration process.
 7. After filling all the details, click on &#39;Submit&#39; to register the alert list for the user.
-    ![Submit Alert List](https://s29.postimg.org/exlyx6yaf/Set_Alert_List.jpg)
+####![Submit Alert List](https://s29.postimg.org/exlyx6yaf/Set_Alert_List.jpg)
+
 8. Click on &#39;Back&#39;
 9. Fill up the fields - Full Name, Address, Gender, Age, Weight, Height, Heart rate and any medical history of the user.
-    ![Save User Details](https://s29.postimg.org/ow6xjo7pz/Set_Profile_Details.jpg)
+####![Save User Details](https://s29.postimg.org/ow6xjo7pz/Set_Profile_Details.jpg)
+
 10. Click &#39;Save&#39;.
 11. This completes the registration process and on successful completion the app redirects the user to the initial Login page.
 
