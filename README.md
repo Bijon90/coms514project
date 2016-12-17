@@ -77,13 +77,13 @@ On opening the app, the following screen is shown:
 ### **Sign In:**
 1.  After the user has already registered, they can login to the application by providing the registered email address and password combination and clicking &#39;Sign In&#39; button.
 
-    ![Sign In](https://s29.postimg.org/wq7j52fiv/Sign_In.jpg)
-    
+####![Sign In](https://s29.postimg.org/wq7j52fiv/Sign_In.jpg)    
+
 ### **Homepage:**
 1. After logging in to the app, it will redirect to the Home Page.
 
-    ![Home Page](https://s29.postimg.org/9sg61tvyv/Home_Page.jpg)
-    
+####![Home Page](https://s29.postimg.org/9sg61tvyv/Home_Page.jpg)    
+
 2. The homepage displays four information:
     a. Continuously monitored pulse rate
     b. Maximum Pulse rate tracked in current session
