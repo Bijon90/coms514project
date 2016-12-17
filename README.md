@@ -14,8 +14,11 @@ This application can make significant improvement in care giving to elderly peop
 The application is specifically useful in cases where the elderly people stay at home and there is nobody to watch over them all the time, especially during the night. It is even harder for care giver to monitor them all the time. There can be even cases when a person is not able to use a lifeline button or call someone for help when they suddenly feel unwell or suffer from serious health breakdown. In such scenarios, this application will send a notification to the alert list and call for immediate attention. We have also added functionality to register the user with details about the person on which pulse rate can vary.
 
 ## **Execution Environments:**
+
 Android 6.x Marshmallow
+
 ## **Steps to set up the application:**
+
 ### **System Requirements:**
 Operating System: Windows/Mac/Linux
 Memory: 3GB minimum, 8GB recommended, plus 1 GB for the Android Emulator
@@ -47,11 +50,13 @@ JVM: OpenJDK 64-Bit Server VM
     a. Copy the apk file from /MyApplication2/app/build/outputs/apk/
     b. Save it in your android device.
     c. Install the application and run it.
-[/embed]
+
 ## **Database Set-Up Instructions:**
-[embed]https://drive.google.com/a/iastate.edu/file/d/0B0ufBQPEDYPDSHRlbnVUYmNheUk/view?usp=sharing[/embed]
+(https://drive.google.com/a/iastate.edu/file/d/0B0ufBQPEDYPDSHRlbnVUYmNheUk/view?usp=sharing)
 ## **How to use the application:**
+
 ### **Welcome to PulseTracker:**
+
 On opening the app, the following screen is shown:
 
 ![Welcome Screen](https://s27.postimg.org/5qw094trn/Welcome.jpg)
