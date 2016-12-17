@@ -7,13 +7,10 @@ GitHub Link: [https://github.com/Bijon90/coms514project](https://github.com/Bijo
 
 ## **Introduction:**
 Health-care has the top most priority for everyone and it is a domain where still active research is going on to provide better care and better solutions utilizing medical knowledge and available advanced technologies. Health issues can be sudden, specially health issues increase with increase in age. And it is of utmost interest to provide better solutions and better health monitoring systems. Now-a-days we have plenty of wearable devices that can track a wide range of health readings.
-
 Our project aims to utilize these devices and the tracked data in a more useful and effective way. In this project, we have developed an android based application which takes pulse rate readings as input, collected from wearable devices via Bluetooth or Wi-Fi, and provides a better monitoring system. If there is any irregularity or abnormality in pulse rate, the device automatically sends a notification to a previously user-defined list of contacts (Doctor/ nurse/ Care-Giver) to alert them about the alarming situation.
-
 This application can make significant improvement in care giving to elderly people and prove to be very useful in critical health conditions.
 
 ## **Usage:**
-
 The application is specifically useful in cases where the elderly people stay at home and there is nobody to watch over them all the time, especially during the night. It is even harder for care giver to monitor them all the time. There can be even cases when a person is not able to use a lifeline button or call someone for help when they suddenly feel unwell or suffer from serious health breakdown. In such scenarios, this application will send a notification to the alert list and call for immediate attention. We have also added functionality to register the user with details about the person on which pulse rate can vary.
 
 ## **Execution Environments:**
@@ -54,13 +51,11 @@ JVM: OpenJDK 64-Bit Server VM
 ## **Database Set-Up Instructions:**
 
 ## **How to use the application:**
-
 ### **Welcome to PulseTracker:**
-![Welcome Screen](https://s27.postimg.org/5qw094trn/Welcome.jpg)
 On opening the app, the following screen is shown:
+![Welcome Screen](https://s27.postimg.org/5qw094trn/Welcome.jpg)
 
 ### **Registration:**
-
 1. If user is not already registered on the app, the user can click on the &#39;Register&#39; button on login page.
 ![Register](https://s27.postimg.org/itrmsejzn/Register.jpg)
 2. The application takes the user to the sign-up page.
@@ -92,19 +87,17 @@ On opening the app, the following screen is shown:
 ### **Homepage Menu:**
 1. The homepage also has a menu section of the application:
 ![Home Page Menu](https://s29.postimg.org/zcig89hcn/Home_Page_Menu.jpg)
-a. **User Profile details:** in which user can view/update his/her profile anytime.
-![User Profile Details](https://s29.postimg.org/ke4mrkro7/User_Details.jpg)
+    a. **User Profile details:** in which user can view/update his/her profile anytime.
+    ![User Profile Details](https://s29.postimg.org/ke4mrkro7/User_Details.jpg)
    **Modify** : The modify button enables the user to save all the modified user details.
    **Back To Home Page** : This back button redirects the user back to home page.
-
     b. **Alert list:** This menu option displays the alert list of the user and provides the option to modify it.
-![Alert List Details](https://s29.postimg.org/tyjo0prmf/Alert_List_Details.jpg)
+    ![Alert List Details](https://s29.postimg.org/tyjo0prmf/Alert_List_Details.jpg)
    **Modify** : The modify button enables the user to save all the modified alert list.
    **Back** : This back button redirects the user back to home page.
-
     c. **Send Report:** This option enables the user to send reports on demand and select contacts from alert list to which the report should be sent to. This will send an email and SMS to the people in alert list.
-![Send Report](https://s29.postimg.org/wz53uzsbb/Send_Report.jpg)
-d. **Log Out:** Enables user to logout form the application.
+    ![Send Report](https://s29.postimg.org/wz53uzsbb/Send_Report.jpg)
+    d. **Log Out:** Enables user to logout form the application.
 
 ### **Contact Us:**
 1. Bijon Bose - email: bkbose@iastate.edu
